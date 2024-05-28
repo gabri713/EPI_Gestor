@@ -11,6 +11,6 @@ package com.mycompany.epi_gestor;
 public class EPI_Gestor {
 
     public static void main(String[] args) {
-        System.out.println("Projeto Technight EPI Gestor");
+        System.out.println("Projeto Tech night EPI Gestor");
     }
 }
