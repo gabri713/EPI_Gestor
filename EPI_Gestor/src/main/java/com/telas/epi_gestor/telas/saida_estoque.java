@@ -27,9 +27,9 @@ public class saida_estoque extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBTeditar7 = new javax.swing.JButton();
+        JBTsalvar7 = new javax.swing.JButton();
+        JBTcancelar7 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -40,29 +40,31 @@ public class saida_estoque extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, -1, -1));
+        JBTeditar7.setBackground(new java.awt.Color(255, 0, 255));
+        JBTeditar7.setForeground(new java.awt.Color(255, 255, 255));
+        JBTeditar7.setText("EDITAR");
+        jPanel1.add(JBTeditar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 463, 190, 60));
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
+        JBTsalvar7.setBackground(new java.awt.Color(255, 0, 255));
+        JBTsalvar7.setForeground(new java.awt.Color(255, 255, 255));
+        JBTsalvar7.setText("SALVAR");
+        jPanel1.add(JBTsalvar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 190, 60));
 
-        jButton3.setText("jButton3");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, -1, -1));
+        JBTcancelar7.setBackground(new java.awt.Color(255, 0, 255));
+        JBTcancelar7.setForeground(new java.awt.Color(255, 255, 255));
+        JBTcancelar7.setText("CANCELAR");
+        jPanel1.add(JBTcancelar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 463, 200, 60));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 210, 270, 40));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 260, 40));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 220, 240, 30));
+        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 392, 260, 50));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 392, 260, 50));
 
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 240, 30));
-
-        jTextField3.setText("jTextField3");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 402, 230, 30));
-
-        jTextField4.setText("jTextField4");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 402, 230, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/saida_estoque.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\saida_estoque.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 780, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,9 +123,9 @@ public class saida_estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton JBTcancelar7;
+    private javax.swing.JButton JBTeditar7;
+    private javax.swing.JButton JBTsalvar7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

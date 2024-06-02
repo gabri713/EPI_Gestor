@@ -35,51 +35,44 @@ public class tela_cad_epi extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        JBTsalvar5 = new javax.swing.JButton();
+        JBTcancelar5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 100, 170, 40));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 180, 180, 40));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 250, 180, 40));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(654, 102, 150, 40));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(654, 180, 150, 40));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(654, 250, 150, 40));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
-
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
-
-        jTextField3.setText("jTextField3");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
-
-        jTextField4.setText("jTextField4");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
-
-        jTextField5.setText("jTextField5");
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, -1, -1));
-
-        jTextField6.setText("jTextField6");
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, -1, -1));
-
-        jTextField7.setText("jTextField7");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 230, 30));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 270, 40));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 260, 40));
 
-        jTextField8.setText("jTextField8");
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 230, 30));
+        JBTsalvar5.setBackground(new java.awt.Color(255, 0, 255));
+        JBTsalvar5.setForeground(new java.awt.Color(255, 255, 255));
+        JBTsalvar5.setText("SALVAR");
+        jPanel1.add(JBTsalvar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 190, 50));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 160, 30));
+        JBTcancelar5.setBackground(new java.awt.Color(255, 0, 255));
+        JBTcancelar5.setForeground(new java.awt.Color(255, 255, 255));
+        JBTcancelar5.setText("CANCELAR");
+        jPanel1.add(JBTcancelar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 200, 50));
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 470, 170, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/tela_cad_epi.png"))); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 0, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\tela_cad_epi.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,8 +135,8 @@ public class tela_cad_epi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton JBTcancelar5;
+    private javax.swing.JButton JBTsalvar5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

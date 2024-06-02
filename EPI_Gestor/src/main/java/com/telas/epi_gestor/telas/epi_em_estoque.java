@@ -27,14 +27,28 @@ public class epi_em_estoque extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        JBTcancelar6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/lista_epi_estoque.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 0, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("SALVAR");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 190, 50));
+
+        JBTcancelar6.setBackground(new java.awt.Color(255, 0, 255));
+        JBTcancelar6.setForeground(new java.awt.Color(255, 255, 255));
+        JBTcancelar6.setText("CANCELAR");
+        jPanel1.add(JBTcancelar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 453, 190, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\lista_epi_estoque.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 780, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,6 +107,8 @@ public class epi_em_estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBTcancelar6;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

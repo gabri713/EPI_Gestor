@@ -27,64 +27,47 @@ public class aviso_validade_epi extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        JBTeditar10 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 420, 40));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 122, 420, 40));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 420, 40));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 420, 40));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 420, 40));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 420, 30));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 420, 40));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 420, 40));
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 412, 420, 30));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jButton2.setBackground(new java.awt.Color(255, 0, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("SALVAR");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 220, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/aviso_validade.png"))); // NOI18N
+        JBTeditar10.setBackground(new java.awt.Color(255, 0, 255));
+        JBTeditar10.setForeground(new java.awt.Color(255, 255, 255));
+        JBTeditar10.setText("EDITAR");
+        jPanel1.add(JBTeditar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 440, 220, 60));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\aviso_validade.png")); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 750, 500));
-
-        jTextField1.setText("jTextField1");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
-
-        jTextField2.setText("jTextField2");
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
-
-        jTextField3.setText("jTextField3");
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
-
-        jTextField4.setText("jTextField4");
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
-
-        jTextField5.setText("jTextField5");
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
-
-        jTextField6.setText("jTextField6");
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, -1, -1));
-
-        jTextField7.setText("jTextField7");
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
-
-        jTextField8.setText("jTextField8");
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, -1, -1));
-
-        jTextField9.setText("jTextField9");
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, -1, -1));
-
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, -1, -1));
-
-        jButton2.setText("jButton2");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, -1, -1));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 770, 530));
+        jLabel2.setMaximumSize(null);
+        jLabel2.setPreferredSize(new java.awt.Dimension(1001, 600));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,9 +81,8 @@ public class aviso_validade_epi extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,11 +124,10 @@ public class aviso_validade_epi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton JBTeditar10;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

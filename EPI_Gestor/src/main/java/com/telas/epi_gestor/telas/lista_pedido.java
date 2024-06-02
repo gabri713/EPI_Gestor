@@ -27,18 +27,28 @@ public class lista_pedido extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        JBTnovopedido13 = new javax.swing.JButton();
+        JBTpesquisar13 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 113, 200, 30));
+        JBTnovopedido13.setBackground(new java.awt.Color(255, 0, 255));
+        JBTnovopedido13.setForeground(new java.awt.Color(255, 255, 255));
+        JBTnovopedido13.setText("NOVO PEDIDO");
+        jPanel1.add(JBTnovopedido13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 230, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/lista_de_pedidos.png"))); // NOI18N
+        JBTpesquisar13.setBackground(new java.awt.Color(255, 0, 255));
+        JBTpesquisar13.setForeground(new java.awt.Color(255, 255, 255));
+        JBTpesquisar13.setText("PESQUISAR");
+        jPanel1.add(JBTpesquisar13, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 100, 220, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\lista_de_pedidos.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 770, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,7 +107,8 @@ public class lista_pedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton JBTnovopedido13;
+    private javax.swing.JButton JBTpesquisar13;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

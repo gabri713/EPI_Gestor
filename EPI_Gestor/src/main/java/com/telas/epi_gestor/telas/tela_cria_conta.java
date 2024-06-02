@@ -27,7 +27,7 @@ public class tela_cria_conta extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        JBTinscrevase1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
@@ -39,29 +39,49 @@ public class tela_cria_conta extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 140, 30));
-
-        jTextField1.setText("jTextField1");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 200, 30));
-
-        jTextField2.setText("jTextField2");
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 200, 30));
+        JBTinscrevase1.setBackground(new java.awt.Color(255, 0, 255));
+        JBTinscrevase1.setForeground(new java.awt.Color(255, 255, 255));
+        JBTinscrevase1.setText("INSCREVER-SE");
+        JBTinscrevase1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTinscrevase1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTinscrevase1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 140, 40));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 240, 40));
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 240, 40));
 
         jPasswordField1.setText("jPasswordField1");
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 220, 20));
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 240, 40));
 
-        jTextField3.setText("jTextField3");
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 220, 30));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 240, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/tela_cria_conta.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\tela_cria_conta.png")); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 520));
+        jLabel2.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel2.setPreferredSize(new java.awt.Dimension(1001, 600));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 790, 520));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 740, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void JBTinscrevase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTinscrevase1ActionPerformed
+        // TODO add your handling code here:
+        tela_cria_conta.this.dispose();
+        tela_login JBTinscrevase1 = new tela_login();
+        JBTinscrevase1.setVisible(true);
+    }//GEN-LAST:event_JBTinscrevase1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +119,7 @@ public class tela_cria_conta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton JBTinscrevase1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;

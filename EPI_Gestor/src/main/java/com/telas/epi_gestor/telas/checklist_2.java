@@ -27,14 +27,22 @@ public class checklist_2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        JBTsalvar12 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/checklist2.png"))); // NOI18N
+        JBTsalvar12.setBackground(new java.awt.Color(255, 0, 255));
+        JBTsalvar12.setForeground(new java.awt.Color(255, 255, 255));
+        JBTsalvar12.setText("SALVAR");
+        jPanel1.add(JBTsalvar12, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 453, 280, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\checklist2.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 770, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,6 +101,7 @@ public class checklist_2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBTsalvar12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

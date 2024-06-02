@@ -31,43 +31,43 @@ public class entrada_de_estoque extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBTeditar7 = new javax.swing.JButton();
+        JBTsalvar7 = new javax.swing.JButton();
+        JBTcancelar7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 260, 40));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 212, 260, 40));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 260, 40));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 260, 40));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 240, 30));
+        JBTeditar7.setBackground(new java.awt.Color(255, 0, 255));
+        JBTeditar7.setForeground(new java.awt.Color(255, 255, 255));
+        JBTeditar7.setText("EDITAR");
+        jPanel1.add(JBTeditar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 190, 50));
 
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 212, 260, 30));
-
-        jTextField3.setText("jTextField3");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 240, -1));
-
-        jTextField4.setText("jTextField4");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 260, -1));
-
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 160, 30));
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        JBTsalvar7.setBackground(new java.awt.Color(255, 0, 255));
+        JBTsalvar7.setForeground(new java.awt.Color(255, 255, 255));
+        JBTsalvar7.setText("SALVAR");
+        JBTsalvar7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                JBTsalvar7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 160, 30));
+        jPanel1.add(JBTsalvar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 190, 50));
 
-        jButton3.setText("jButton3");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 473, 150, 30));
+        JBTcancelar7.setBackground(new java.awt.Color(255, 0, 255));
+        JBTcancelar7.setForeground(new java.awt.Color(255, 255, 255));
+        JBTcancelar7.setText("CANCELAR");
+        jPanel1.add(JBTcancelar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 463, 190, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/entra_estoque.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\entra_estoque.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,9 +90,9 @@ public class entrada_de_estoque extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void JBTsalvar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTsalvar7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_JBTsalvar7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,9 +130,9 @@ public class entrada_de_estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton JBTcancelar7;
+    private javax.swing.JButton JBTeditar7;
+    private javax.swing.JButton JBTsalvar7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

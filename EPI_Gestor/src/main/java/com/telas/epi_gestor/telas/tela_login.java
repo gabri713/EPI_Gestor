@@ -34,32 +34,49 @@ public class tela_login extends javax.swing.JFrame {
         btnlogin = new javax.swing.JButton();
         txtemail = new javax.swing.JTextField();
         txtsenha = new javax.swing.JPasswordField();
+        JBTesqueceu2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnlogin.setText("jButton1");
+        btnlogin.setBackground(new java.awt.Color(255, 0, 255));
+        btnlogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnlogin.setText("LOGIN");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 150, 40));
 
-        txtemail.setText("jTextField1");
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
-        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 220, 210, -1));
-        jPanel1.add(txtsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 280, 220, 20));
+        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 230, 40));
+        jPanel1.add(txtsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 230, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/tela_login.png"))); // NOI18N
+        JBTesqueceu2.setBackground(new java.awt.Color(255, 0, 255));
+        JBTesqueceu2.setForeground(new java.awt.Color(255, 255, 255));
+        JBTesqueceu2.setText("ESQUECEU SUA SENHA");
+        JBTesqueceu2.setMaximumSize(new java.awt.Dimension(72, 23));
+        JBTesqueceu2.setMinimumSize(new java.awt.Dimension(72, 23));
+        JBTesqueceu2.setPreferredSize(new java.awt.Dimension(72, 23));
+        JBTesqueceu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTesqueceu2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JBTesqueceu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, 170, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\tela_login.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 720, 530));
+        jLabel1.setMaximumSize(new java.awt.Dimension(1001, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1001, 600));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 750, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +109,10 @@ public class tela_login extends javax.swing.JFrame {
             f.setVisible(true);
             JOptionPane.showMessageDialog(this,"Email ou senha incorreta!");
         }
+        tela_login.this.dispose();
+        tela_menu btnlogin = new tela_menu();
+        btnlogin.setVisible(true);
+        
         
         
     }//GEN-LAST:event_btnloginActionPerformed
@@ -99,6 +120,13 @@ public class tela_login extends javax.swing.JFrame {
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
+
+    private void JBTesqueceu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTesqueceu2ActionPerformed
+        // TODO add your handling code here:
+        tela_login.this.dispose();
+        tela_redefinir_senha JBTesqueceu2 = new tela_redefinir_senha();
+        JBTesqueceu2.setVisible(true);
+    }//GEN-LAST:event_JBTesqueceu2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +164,7 @@ public class tela_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBTesqueceu2;
     private javax.swing.JButton btnlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

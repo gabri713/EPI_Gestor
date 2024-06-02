@@ -27,8 +27,8 @@ public class tela_cad_funcionarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        JBTsalvar4 = new javax.swing.JButton();
+        JBTcancelar4 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -45,50 +45,36 @@ public class tela_cad_funcionarios extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 463, 180, 30));
+        JBTsalvar4.setBackground(new java.awt.Color(255, 0, 255));
+        JBTsalvar4.setForeground(new java.awt.Color(255, 255, 255));
+        JBTsalvar4.setText("SALVAR");
+        jPanel1.add(JBTsalvar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 190, 50));
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        JBTcancelar4.setBackground(new java.awt.Color(255, 0, 255));
+        JBTcancelar4.setForeground(new java.awt.Color(255, 255, 255));
+        JBTcancelar4.setText("CANCELAR");
+        JBTcancelar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                JBTcancelar4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 180, 40));
+        jPanel1.add(JBTcancelar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 190, 50));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 480, 40));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 480, 40));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 480, 40));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 200, 40));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 210, 40));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 200, 40));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 322, 150, 40));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 150, 40));
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 150, 40));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 150, 40));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
-
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
-
-        jTextField3.setText("jTextField3");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, -1, -1));
-
-        jTextField4.setText("jTextField4");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
-
-        jTextField5.setText("jTextField5");
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, -1, -1));
-
-        jTextField6.setText("jTextField6");
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
-
-        jTextField7.setText("jTextField7");
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 330, -1, -1));
-
-        jTextField8.setText("jTextField8");
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
-
-        jTextField9.setText("jTextField9");
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
-
-        jTextField10.setText("jTextField10");
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, -1, -1));
-
-        lb_cad_funcionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/tela_cad_funcionarios.png"))); // NOI18N
+        lb_cad_funcionarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gabriel Resende\\Desktop\\tech tech\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\sistema\\tela_cad_funcionarios.png")); // NOI18N
         lb_cad_funcionarios.setText("jLabel1");
-        jPanel1.add(lb_cad_funcionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 810, 490));
+        lb_cad_funcionarios.setMaximumSize(new java.awt.Dimension(1001, 600));
+        lb_cad_funcionarios.setPreferredSize(new java.awt.Dimension(1001, 600));
+        jPanel1.add(lb_cad_funcionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 810, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,15 +88,15 @@ public class tela_cad_funcionarios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void JBTcancelar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTcancelar4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_JBTcancelar4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,8 +134,8 @@ public class tela_cad_funcionarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton JBTcancelar4;
+    private javax.swing.JButton JBTsalvar4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
