@@ -4,20 +4,16 @@
  */
 package com.telas.epi_gestor.telas;
 
-import com.mycompany.epi_gestor.telas.administrador;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author vitor
  */
-public class tela_login extends javax.swing.JFrame {
+public class estoque_ extends javax.swing.JFrame {
 
-    administrador adm= new administrador("admin@gmail.com","admin");
     /**
-     * Creates new form tela_login
+     * Creates new form estoque_
      */
-    public tela_login() {
+    public estoque_() {
         initComponents();
     }
 
@@ -31,42 +27,47 @@ public class tela_login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnlogin = new javax.swing.JButton();
-        txtemail = new javax.swing.JTextField();
-        txtsenha = new javax.swing.JPasswordField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnlogin.setText("jButton1");
-        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setText("jTextField1");
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 240, -1));
+
+        jTextField2.setText("jTextField2");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnloginActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 282, 250, 30));
 
-        txtemail.setText("jTextField1");
-        txtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemailActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 220, 210, -1));
-        jPanel1.add(txtsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 280, 220, 20));
+        jTextField3.setText("jTextField3");
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 240, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/tela_login.png"))); // NOI18N
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 170, 30));
+
+        jButton2.setText("jButton2");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 463, 160, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/estoque.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 720, 530));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 16, 780, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -81,24 +82,9 @@ public class tela_login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-        String email = txtemail.getText();
-        String senha = String.valueOf(txtsenha.getPassword());
-        
-        if (email .equals(adm.getEmail()) && senha.equals(adm.getSenha())) {
-            Funcionarios f = new Funcionarios ();
-            this.dispose();
-            f.setVisible(true);
-            JOptionPane.showMessageDialog(this,"Email ou senha incorreta!");
-        }
-        
-        
-    }//GEN-LAST:event_btnloginActionPerformed
-
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtemailActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,29 +103,31 @@ public class tela_login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(estoque_.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(estoque_.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(estoque_.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(estoque_.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_login().setVisible(true);
+                new estoque_().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnlogin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtemail;
-    private javax.swing.JPasswordField txtsenha;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

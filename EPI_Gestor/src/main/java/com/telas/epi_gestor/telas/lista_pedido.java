@@ -4,20 +4,16 @@
  */
 package com.telas.epi_gestor.telas;
 
-import com.mycompany.epi_gestor.telas.administrador;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author vitor
  */
-public class tela_login extends javax.swing.JFrame {
+public class lista_pedido extends javax.swing.JFrame {
 
-    administrador adm= new administrador("admin@gmail.com","admin");
     /**
-     * Creates new form tela_login
+     * Creates new form lista_pedido
      */
-    public tela_login() {
+    public lista_pedido() {
         initComponents();
     }
 
@@ -31,42 +27,26 @@ public class tela_login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnlogin = new javax.swing.JButton();
-        txtemail = new javax.swing.JTextField();
-        txtsenha = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnlogin.setText("jButton1");
-        btnlogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnloginActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 113, 200, 30));
 
-        txtemail.setText("jTextField1");
-        txtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemailActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 220, 210, -1));
-        jPanel1.add(txtsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 280, 220, 20));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/tela_login.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/sistema/lista_de_pedidos.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 720, 530));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 770, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -80,25 +60,6 @@ public class tela_login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-        // TODO add your handling code here:
-        String email = txtemail.getText();
-        String senha = String.valueOf(txtsenha.getPassword());
-        
-        if (email .equals(adm.getEmail()) && senha.equals(adm.getSenha())) {
-            Funcionarios f = new Funcionarios ();
-            this.dispose();
-            f.setVisible(true);
-            JOptionPane.showMessageDialog(this,"Email ou senha incorreta!");
-        }
-        
-        
-    }//GEN-LAST:event_btnloginActionPerformed
-
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtemailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,29 +78,27 @@ public class tela_login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lista_pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lista_pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lista_pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lista_pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_login().setVisible(true);
+                new lista_pedido().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnlogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtemail;
-    private javax.swing.JPasswordField txtsenha;
     // End of variables declaration//GEN-END:variables
 }
