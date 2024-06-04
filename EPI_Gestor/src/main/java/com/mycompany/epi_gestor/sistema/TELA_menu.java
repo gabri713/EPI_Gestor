@@ -31,11 +31,11 @@ public class TELA_menu extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         btn_MN_cadastro_F = new javax.swing.JButton();
-        btn_MN_estoque = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btn_MN_epi_entregue = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        CB_listas = new javax.swing.JComboBox<>();
+        CB_estoque = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,12 +49,6 @@ public class TELA_menu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
-
-        btn_MN_estoque.setText("jButton1");
-        jPanel2.add(btn_MN_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 50));
-
-        jButton3.setText("jButton1");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 70, 60));
 
         jButton4.setText("jButton1");
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 70, 60));
@@ -70,7 +64,13 @@ public class TELA_menu extends javax.swing.JFrame {
         jButton6.setText("jButton1");
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 70, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TL_menu.png"))); // NOI18N
+        CB_listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(CB_listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 422, -1, 50));
+
+        CB_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(CB_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 60));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Documents\\GitHub\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_menu.png")); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 800, 510));
 
@@ -99,8 +99,10 @@ public class TELA_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_MN_epi_entregueActionPerformed
 
     private void btn_MN_cadastro_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MN_cadastro_FActionPerformed
-   new TELA_cadastro_funcionarios();
-    dispose();
+        TELA_menu.this.dispose();
+        TELA_cadastro_funcionarios btn_MN_cadastro_F = new TELA_cadastro_funcionarios();
+        btn_MN_cadastro_F.setVisible(true);
+    
    
     }//GEN-LAST:event_btn_MN_cadastro_FActionPerformed
 
@@ -140,10 +142,10 @@ public class TELA_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB_estoque;
+    private javax.swing.JComboBox<String> CB_listas;
     private javax.swing.JButton btn_MN_cadastro_F;
     private javax.swing.JButton btn_MN_epi_entregue;
-    private javax.swing.JButton btn_MN_estoque;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
