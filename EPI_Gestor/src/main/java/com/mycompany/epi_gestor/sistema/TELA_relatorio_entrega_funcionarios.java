@@ -33,7 +33,7 @@ public class TELA_relatorio_entrega_funcionarios extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\relatorio_entrega_funcionarios.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/relatorio_entrega_funcionarios.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -33,7 +33,7 @@ public class TELA_redefinir_senha extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TL_redefinir_senha.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_redefinir_senha.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

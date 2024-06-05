@@ -60,7 +60,7 @@ public class TELA_cria_nova_conta extends javax.swing.JFrame {
         jButton1.setText("jButton1");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 393, 110, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TL_cria_nova_conta.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_cria_nova_conta.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 500));
 

@@ -33,7 +33,7 @@ public class TELA_lista_funcionarios_cadastrados extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/lista_funcionarios cadastrados.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\lista_funcionarios cadastrados.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 500));
 

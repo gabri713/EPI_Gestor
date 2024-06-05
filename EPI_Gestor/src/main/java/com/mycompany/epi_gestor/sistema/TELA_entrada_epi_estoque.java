@@ -67,9 +67,9 @@ public class TELA_entrada_epi_estoque extends javax.swing.JFrame {
                 btn_MN_cadastro_FActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 50));
+        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\entrada_epi_estoque.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\entrada_epi_estoque.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 480));
 

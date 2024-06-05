@@ -48,7 +48,7 @@ public class TELA_menu extends javax.swing.JFrame {
                 btn_MN_cadastro_FActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
+        jPanel2.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
         btn_MN_epi_entregue.setText("jButton1");
         btn_MN_epi_entregue.addActionListener(new java.awt.event.ActionListener() {
@@ -56,15 +56,15 @@ public class TELA_menu extends javax.swing.JFrame {
                 btn_MN_epi_entregueActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_MN_epi_entregue, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 70, 60));
+        jPanel2.add(btn_MN_epi_entregue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 60));
 
-        CB_listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lista de Funcionario", "Lista epi  em Estoque", " " }));
         CB_listas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB_listasActionPerformed(evt);
             }
         });
-        jPanel2.add(CB_listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 422, -1, 50));
+        jPanel2.add(CB_listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 430, -1, 50));
 
         CB_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visao Geral do Estoque", "Entrada EPI Estoque", "Saida para funcionarios" }));
         CB_estoque.setToolTipText("");
@@ -73,7 +73,7 @@ public class TELA_menu extends javax.swing.JFrame {
                 CB_estoqueActionPerformed(evt);
             }
         });
-        jPanel2.add(CB_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, 60));
+        jPanel2.add(CB_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 100, 180, 60));
 
         cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio Entrega Funcionarios", "Relatorio De Estoque" }));
         cb_relatorios.addActionListener(new java.awt.event.ActionListener() {
@@ -81,11 +81,11 @@ public class TELA_menu extends javax.swing.JFrame {
                 cb_relatoriosActionPerformed(evt);
             }
         });
-        jPanel2.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 60));
+        jPanel2.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 330, -1, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_menu.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_menu.png")); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 800, 510));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 800, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,19 +151,16 @@ public class TELA_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_relatoriosActionPerformed
 
     private void CB_listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_listasActionPerformed
-        // TODO add your handling code here:
-        if ("Visao Geral do Estoque".equals(selectedOption)) {
+String selectedOption = (String)  CB_listas.getSelectedItem();
+ if ("Lista de Funcionario".equals(selectedOption)) {
             TELA_menu.this.dispose();
-            TELA_visao_geral_estoque VisaoGeralEstoque = new TELA_visao_geral_estoque();
-            VisaoGeralEstoque.setVisible(true);
-        } else if ("Entrada EPI Estoque".equals(selectedOption)) {
+            TELA_lista_funcionarios_cadastrados Fcadastrdos = new TELA_lista_funcionarios_cadastrados();
+            Fcadastrdos.setVisible(true);
+        } else if ("Lista epi  em Estoque".equals(selectedOption)) {
             TELA_menu.this.dispose();
-            TELA_entrada_epi_estoque EntradaEpiEstoque = new TELA_entrada_epi_estoque();
-            EntradaEpiEstoque.setVisible(true);
-        } else if ("Saida para funcionarios".equals(selectedOption)) {
-            TELA_menu.this.dispose();
-            TELA_saida_epi_para_funcionarios SaidaParaFuncionarios = new TELA_saida_epi_para_funcionarios();
-            SaidaParaFuncionarios.setVisible(true);
+           TELA_lista_epi_estoque EPIemEstoque = new TELA_lista_epi_estoque();
+             EPIemEstoque.setVisible(true);
+        }
     }//GEN-LAST:event_CB_listasActionPerformed
     
     /**

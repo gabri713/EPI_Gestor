@@ -57,7 +57,7 @@ public class TELA_cadastro_funcionarios extends javax.swing.JFrame {
         jTextField6.setText("jTextField6");
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 170, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_cadastro_funcionarios.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_cadastro_funcionarios.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 800, 530));
 

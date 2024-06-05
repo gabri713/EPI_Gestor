@@ -56,7 +56,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="10" width="-1" height="50"/>
+              <AbsoluteConstraints x="10" y="10" width="-1" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -69,18 +69,17 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="200" width="70" height="60"/>
+              <AbsoluteConstraints x="10" y="200" width="-1" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="CB_listas">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Lista de Funcionario"/>
+                <StringItem index="1" value="Lista epi  em Estoque"/>
+                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -92,7 +91,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="422" width="-1" height="50"/>
+              <AbsoluteConstraints x="-70" y="430" width="-1" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -115,7 +114,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="100" width="160" height="60"/>
+              <AbsoluteConstraints x="-90" y="100" width="180" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -136,20 +135,20 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="330" width="-1" height="60"/>
+              <AbsoluteConstraints x="-120" y="330" width="-1" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\vitor\Desktop\EPI_gestor\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\TL_menu.png"/>
+              <Image iconType="2" name="D:\Users\vcasotti\Desktop\Nova pasta\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\TL_menu.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="0" width="800" height="510"/>
+              <AbsoluteConstraints x="10" y="0" width="800" height="510"/>
             </Constraint>
           </Constraints>
         </Component>

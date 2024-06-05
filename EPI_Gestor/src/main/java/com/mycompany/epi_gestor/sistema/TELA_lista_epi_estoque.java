@@ -33,7 +33,7 @@ public class TELA_lista_epi_estoque extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/lista de epi em estoque.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\lista de epi em estoque.png")); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
