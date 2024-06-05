@@ -27,25 +27,69 @@ public class TELA_entrada_epi_estoque extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txt_tipo_epi = new javax.swing.JTextField();
+        txt_quantidade = new javax.swing.JTextField();
+        txt_fornecedor = new javax.swing.JTextField();
+        data_entrada = new javax.swing.JTextField();
+        btn_MN_cadastro_F = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btn_MN_cadastro_F1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/entrada_epi_estoque.png"))); // NOI18N
+        txt_tipo_epi.setText("jTextField1");
+        jPanel1.add(txt_tipo_epi, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 200, 30));
+
+        txt_quantidade.setText("jTextField2");
+        txt_quantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_quantidadeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 210, -1));
+
+        txt_fornecedor.setText("jTextField1");
+        txt_fornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fornecedorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_fornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 332, 190, 30));
+
+        data_entrada.setText("jTextField3");
+        jPanel1.add(data_entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 220, -1));
+
+        btn_MN_cadastro_F.setText("jButton1");
+        btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MN_cadastro_FActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\entrada_epi_estoque.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 800, 480));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 480));
+
+        btn_MN_cadastro_F1.setText("jButton1");
+        btn_MN_cadastro_F1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MN_cadastro_F1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_MN_cadastro_F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 822, Short.MAX_VALUE)
+            .addGap(0, 897, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -60,6 +104,28 @@ public class TELA_entrada_epi_estoque extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_quantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_quantidadeActionPerformed
+
+    private void txt_fornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fornecedorActionPerformed
+
+    private void btn_MN_cadastro_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MN_cadastro_FActionPerformed
+        TELA_entrada_epi_estoque.this.dispose();
+        TELA_cadastro_funcionarios btn_MN_cadastro_F = new TELA_cadastro_funcionarios();
+        btn_MN_cadastro_F.setVisible(true);
+
+    }//GEN-LAST:event_btn_MN_cadastro_FActionPerformed
+
+    private void btn_MN_cadastro_F1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MN_cadastro_F1ActionPerformed
+        TELA_entrada_epi_estoque.this.dispose();
+        TELA_cadastro_funcionarios btn_MN_cadastro_F = new TELA_cadastro_funcionarios();
+        btn_MN_cadastro_F.setVisible(true);
+
+    }//GEN-LAST:event_btn_MN_cadastro_F1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,7 +164,13 @@ public class TELA_entrada_epi_estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_MN_cadastro_F;
+    private javax.swing.JButton btn_MN_cadastro_F1;
+    private javax.swing.JTextField data_entrada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txt_fornecedor;
+    private javax.swing.JTextField txt_quantidade;
+    private javax.swing.JTextField txt_tipo_epi;
     // End of variables declaration//GEN-END:variables
 }
