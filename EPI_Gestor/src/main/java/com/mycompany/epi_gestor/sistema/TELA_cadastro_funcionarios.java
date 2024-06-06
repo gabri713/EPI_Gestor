@@ -33,7 +33,12 @@ public class TELA_cadastro_funcionarios extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
+        CB_estoque = new javax.swing.JComboBox<>();
+        btn_MN_epi_entregue = new javax.swing.JButton();
+        cb_relatorios = new javax.swing.JComboBox<>();
+        CB_listas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        btn_MN_cadastro_F = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,15 +62,58 @@ public class TELA_cadastro_funcionarios extends javax.swing.JFrame {
         jTextField6.setText("jTextField6");
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 170, -1));
 
+        CB_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visao Geral do Estoque", "Entrada EPI Estoque", "Saida para funcionarios" }));
+        CB_estoque.setToolTipText("");
+        CB_estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_estoqueActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CB_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 110, 180, 50));
+
+        btn_MN_epi_entregue.setText("jButton1");
+        btn_MN_epi_entregue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MN_epi_entregueActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_MN_epi_entregue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 70));
+
+        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio Entrega Funcionarios", "Relatorio De Estoque" }));
+        cb_relatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_relatoriosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 340, -1, 60));
+
+        CB_listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lista de Funcionario", "Lista epi  em Estoque", " " }));
+        CB_listas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_listasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CB_listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 430, 210, 60));
+
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TL_cadastro_funcionarios.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 800, 530));
+
+        btn_MN_cadastro_F.setText("jButton1");
+        btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MN_cadastro_FActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 822, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btn_MN_cadastro_F)
+                .addContainerGap(731, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -74,7 +122,10 @@ public class TELA_cadastro_funcionarios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(btn_MN_cadastro_F, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(468, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -84,6 +135,58 @@ public class TELA_cadastro_funcionarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_MN_cadastro_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MN_cadastro_FActionPerformed
+       
+    }//GEN-LAST:event_btn_MN_cadastro_FActionPerformed
+
+    private void CB_estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_estoqueActionPerformed
+        String selectedOption = (String) CB_estoque.getSelectedItem();
+
+        if ("Visao Geral do Estoque".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_visao_geral_estoque VisaoGeralEstoque = new TELA_visao_geral_estoque();
+            VisaoGeralEstoque.setVisible(true);
+        } else if ("Entrada EPI Estoque".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_entrada_epi_estoque EntradaEpiEstoque = new TELA_entrada_epi_estoque();
+            EntradaEpiEstoque.setVisible(true);
+        } else if ("Saida para funcionarios".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_saida_epi_para_funcionarios SaidaParaFuncionarios = new TELA_saida_epi_para_funcionarios();
+            SaidaParaFuncionarios.setVisible(true);
+        }
+    }//GEN-LAST:event_CB_estoqueActionPerformed
+
+    private void btn_MN_epi_entregueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MN_epi_entregueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_MN_epi_entregueActionPerformed
+
+    private void cb_relatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_relatoriosActionPerformed
+        String selectedOption = (String)  cb_relatorios.getSelectedItem();
+        if ("Relatorio Entrega Funcionarios".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_relatorio_entrega_funcionarios entregaEstoque = new TELA_relatorio_entrega_funcionarios();
+            entregaEstoque.setVisible(true);
+        } else if ("Relatorio De Estoque".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_relatorio_estoque relatorioEstoque = new TELA_relatorio_estoque();
+            relatorioEstoque.setVisible(true);
+        }
+    }//GEN-LAST:event_cb_relatoriosActionPerformed
+
+    private void CB_listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_listasActionPerformed
+        String selectedOption = (String)  CB_listas.getSelectedItem();
+        if ("Lista de Funcionario".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_lista_funcionarios_cadastrados Fcadastrdos = new TELA_lista_funcionarios_cadastrados();
+            Fcadastrdos.setVisible(true);
+        } else if ("Lista epi  em Estoque".equals(selectedOption)) {
+            TELA_cadastro_funcionarios.this.dispose();
+            TELA_lista_epi_estoque EPIemEstoque = new TELA_lista_epi_estoque();
+            EPIemEstoque.setVisible(true);
+        }
+    }//GEN-LAST:event_CB_listasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,6 +224,11 @@ public class TELA_cadastro_funcionarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB_estoque;
+    private javax.swing.JComboBox<String> CB_listas;
+    private javax.swing.JButton btn_MN_cadastro_F;
+    private javax.swing.JButton btn_MN_epi_entregue;
+    private javax.swing.JComboBox<String> cb_relatorios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
