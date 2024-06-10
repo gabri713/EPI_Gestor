@@ -1,3 +1,14 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -26,47 +37,137 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        VOLTA_INICIO = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_listaF = new javax.swing.JTable();
+        BTN_SALVAR = new javax.swing.JButton();
+        BTN_EDITAR = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        BTN_CANCELAR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA_FUNCIONARIO_CADASTRADO.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        VOLTA_INICIO.setText("jButton1");
+        VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VOLTA_INICIOActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 40));
+
+        tb_listaF.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Data Nascimento", "Endereço", "Cargo"
+            }
+        ));
+        jScrollPane2.setViewportView(tb_listaF);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 157, 760, 270));
+
+        BTN_SALVAR.setText("jButton1");
+        BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SALVARActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 100, 30));
+
+        BTN_EDITAR.setText("jButton2");
+        BTN_EDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EDITARActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_EDITAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 140, 30));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 450, 150, 30));
+
+        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_FUNCIONARIO_CADASTRADO.png")); // NOI18N
+        BTN_CANCELAR.setText("jLabel1");
+        jPanel1.add(BTN_CANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 808, 509));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void VOLTA_INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTA_INICIOActionPerformed
+        // TODO add your handling code here:
+         MENU  VOLTA_INICIO = new MENU();
+         VOLTA_INICIO.setVisible(true);
+
+    }//GEN-LAST:event_VOLTA_INICIOActionPerformed
+
+    private void BTN_EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EDITARActionPerformed
+        // TODO add your handling code here:
+        // Tornar a tabela editável
+    for (int i = 0; i < tb_listaF.getColumnCount(); i++) {
+        Class<?> columnClass = tb_listaF.getColumnClass(i);
+        tb_listaF.setDefaultEditor(columnClass, new DefaultCellEditor(new JTextField()));
+    }
+   
+    }//GEN-LAST:event_BTN_EDITARActionPerformed
+
+    private void BTN_SALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SALVARActionPerformed
+       
+        // Percorrer cada linha da tabela
+    for (int i = 0; i < tb_listaF.getRowCount(); i++) {
+        // Recuperar os valores editados
+        String nome = tb_listaF.getValueAt(i, 0).toString();
+        String dataNascimento = tb_listaF.getValueAt(i, 1).toString();
+        String endereco = tb_listaF.getValueAt(i, 2).toString();
+        String cargo = tb_listaF.getValueAt(i, 3).toString();
+
+        // Atualizar os registros correspondentes no banco de dados
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
+            String sql = "UPDATE Funcionarios SET nome = ?, data_nascimento = ?, endereco = ?, cargo = ? WHERE id = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, dataNascimento);
+            stmt.setString(3, endereco);
+            stmt.setString(4, cargo);
+            stmt.setInt(5, i + 1); // Supondo que o id do funcionário corresponda à posição na tabela (começando de 1)
+            stmt.executeUpdate();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar alterações: " + ex.getMessage());
+        }
+    }
+    JOptionPane.showMessageDialog(this, "Alterações salvas com sucesso!");
+    }//GEN-LAST:event_BTN_SALVARActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ MENU  btn_cancelar = new MENU();
+         btn_cancelar.setVisible(true);           
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,7 +205,47 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel BTN_CANCELAR;
+    private javax.swing.JButton BTN_EDITAR;
+    private javax.swing.JButton BTN_SALVAR;
+    private javax.swing.JButton VOLTA_INICIO;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tb_listaF;
     // End of variables declaration//GEN-END:variables
+
+    void preencherTabela() {
+       
+    try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
+        String sql = "SELECT nome, data_nascimento, endereco, cargo FROM Funcionarios";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nome");
+        model.addColumn("Data de Nascimento");
+        model.addColumn("Endereço");
+        model.addColumn("Cargo");
+
+        while (rs.next()) {
+            Object[] row = {
+                rs.getString("nome"),
+                rs.getString("data_nascimento"),
+                rs.getString("endereco"),
+                rs.getString("cargo")
+            };
+            model.addRow(row);
+        }
+
+        tb_listaF.setModel(model);
+        con.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage());
+    }
+
+    }
 }
+
+   

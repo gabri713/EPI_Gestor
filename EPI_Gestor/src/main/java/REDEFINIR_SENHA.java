@@ -1,3 +1,9 @@
+
+import com.sun.jdi.connect.Transport;
+import java.net.PasswordAuthentication;
+import java.util.Properties;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -27,11 +33,14 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        EMAIL = new javax.swing.JTextField();
+        ENVIAR = new javax.swing.JButton();
+        enviar_email = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -44,31 +53,70 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
             .addGap(0, 551, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/REDEFINIR_SENHA.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1143, 25, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        EMAIL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EMAILActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EMAIL, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 200, -1));
+
+        ENVIAR.setText("jButton1");
+        ENVIAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ENVIARActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 343, 120, 30));
+
+        enviar_email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/REDEFINIR_SENHA.png"))); // NOI18N
+        enviar_email.setText("jLabel1");
+        getContentPane().add(enviar_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 810, 524));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void EMAILActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMAILActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EMAILActionPerformed
+
+    private void ENVIARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENVIARActionPerformed
+        // TODO add your handling code here:]
+         String toEmail = EMAIL.getText();
+        String fromEmail = "seuemail@gmail.com"; // Altere para seu email
+        String fromEmailPassword = "suasenha"; // Altere para a senha do seu email
+        String subject = "Redefinição de Senha";
+        String body = "Clique no link para redefinir sua senha: [link de redefinição]";
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, fromEmailPassword);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject(subject);
+            message.setText(body);
+
+            Transport.send(message);
+            JOptionPane.showMessageDialog(this, "Email de redefinição de senha enviado com sucesso!");
+
+        } catch (MessagingException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao enviar email: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+                                         
+        
+    }//GEN-LAST:event_ENVIARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +154,9 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField EMAIL;
+    private javax.swing.JButton ENVIAR;
+    private javax.swing.JLabel enviar_email;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

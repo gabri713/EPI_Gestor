@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -26,37 +32,48 @@ public class CRIA_CONTA extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txt_nome = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        txt_data = new javax.swing.JTextField();
+        psf_senha = new javax.swing.JPasswordField();
+        btn_criar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_nome.setText("jTextField1");
+        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
+
+        jTextField2.setText("txt_email");
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
+
+        txt_data.setText("jTextField4");
+        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, -1, -1));
+
+        psf_senha.setText("jPasswordField1");
+        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, -1));
+
+        btn_criar.setText("jButton1");
+        btn_criar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_criarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/CRIA_CONTA.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,6 +85,33 @@ public class CRIA_CONTA extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_criarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_criarActionPerformed
+        // TODO add your handling code here:
+        String nome = txt_nome.getText();
+        String email = jTextField2.getText();
+        String data = txt_data.getText();
+        String senha = new String(psf_senha.getPassword());
+
+        String sql = "INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nome);
+            pstmt.setString(2, email);
+            pstmt.setString(3, data);
+            pstmt.setString(4, senha);
+
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao criar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    
+
+    }//GEN-LAST:event_btn_criarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +149,12 @@ public class CRIA_CONTA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_criar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField psf_senha;
+    private javax.swing.JTextField txt_data;
+    private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 }

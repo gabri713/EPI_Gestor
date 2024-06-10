@@ -1,3 +1,10 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -26,49 +33,103 @@ public class LOGIN extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPass_senha = new javax.swing.JPasswordField();
+        txt_Email = new javax.swing.JTextField();
+        btn_logar = new javax.swing.JButton();
+        btn_esqueci_senha = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 210, 20));
+
+        txt_Email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_EmailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 210, 30));
+
+        btn_logar.setText("jButton1");
+        btn_logar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 130, 30));
+
+        btn_esqueci_senha.setText("jButton2");
+        btn_esqueci_senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_esqueci_senhaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 353, 120, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LOGN.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(291, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 806, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_EmailActionPerformed
+
+    private void btn_logarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logarActionPerformed
+        // TODO add your handling code here:
+        String email = txt_Email.getText();
+        String senha = new String(jPass_senha.getPassword());
+
+        String sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, email);
+            pstmt.setString(2, senha);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
+                // Redirecionar para a próxima tela ou funcionalidade
+            } else {
+                JOptionPane.showMessageDialog(this, "Email ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao realizar login: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }//GEN-LAST:event_btn_logarActionPerformed
+
+
+    private void btn_esqueci_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_esqueci_senhaActionPerformed
+        // TODO add your handling code here:
+  LOGIN.this.dispose();
+        REDEFINIR_SENHA btn_esqueci_senha = new REDEFINIR_SENHA();
+        btn_esqueci_senha.setVisible(true);
+    }//GEN-LAST:event_btn_esqueci_senhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +167,11 @@ public class LOGIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_esqueci_senha;
+    private javax.swing.JButton btn_logar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPass_senha;
+    private javax.swing.JTextField txt_Email;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,3 +1,10 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -26,29 +33,164 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        btn_MN_cadastro_F = new javax.swing.JButton();
+        cb_estoque = new javax.swing.JComboBox<>();
+        cb_relatorios = new javax.swing.JComboBox<>();
+        VOLTA_INICIO = new javax.swing.JButton();
+        listas = new javax.swing.JComboBox<>();
+        nome = new javax.swing.JTextField();
+        dt_nascimento = new javax.swing.JTextField();
+        endereco = new javax.swing.JTextField();
+        carteira_trabalho = new javax.swing.JTextField();
+        sexo = new javax.swing.JTextField();
+        estado_civil = new javax.swing.JTextField();
+        escolaridade = new javax.swing.JTextField();
+        cargo = new javax.swing.JTextField();
+        txt_cpf = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        btn_mostra_lista = new javax.swing.JButton();
+        BTN_SALVAR = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
+        BTN_MOTRA_LISTA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_FUNCIONARIO_CADASTRADO.png")); // NOI18N
-        jLabel1.setText("jLabel1");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btn_MN_cadastro_F.setText("jButton2");
+        btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MN_cadastro_FActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 50));
+
+        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
+        cb_estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_estoqueActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 60));
+
+        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
+        cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                cb_relatoriosAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        cb_relatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_relatoriosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 70));
+
+        VOLTA_INICIO.setText("jButton1");
+        VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VOLTA_INICIOActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
+
+        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
+        listas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 80, 70));
+
+        nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 440, -1));
+
+        dt_nascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dt_nascimentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dt_nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 430, -1));
+
+        endereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enderecoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 440, -1));
+
+        carteira_trabalho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carteira_trabalhoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(carteira_trabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
+
+        sexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
+
+        estado_civil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estado_civilActionPerformed(evt);
+            }
+        });
+        jPanel1.add(estado_civil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
+        jPanel1.add(escolaridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, -1, -1));
+
+        cargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, -1, -1));
+
+        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cpfActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, -1));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, -1, -1));
+
+        btn_mostra_lista.setText("jButton1");
+        btn_mostra_lista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostra_listaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 170, 30));
+
+        BTN_SALVAR.setText("jButton2");
+        BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SALVARActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 150, 30));
+
+        btn_cancelar.setText("jButton2");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 140, 30));
+
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
+        BTN_MOTRA_LISTA.setText("jLabel1");
+        jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,6 +211,163 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_MN_cadastro_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MN_cadastro_FActionPerformed
+        
+    }//GEN-LAST:event_btn_MN_cadastro_FActionPerformed
+
+    private void cb_estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_estoqueActionPerformed
+        String selectedOption = (String) cb_estoque.getSelectedItem();
+
+        if ("Visão Geral".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            VISAO_GERAL_ESTOQUE VisaoGeralEstoque = new VISAO_GERAL_ESTOQUE();
+            VisaoGeralEstoque.setVisible(true);
+        } else if ("Entrada de epis".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            ENTRADA_pei_estoque EntradaEpiEstoque = new ENTRADA_pei_estoque();
+            EntradaEpiEstoque.setVisible(true);
+        } else if ("Epi para funcionarios".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            ENTRADA_epi_funcionarios SaidaParaFuncionarios = new ENTRADA_epi_funcionarios();
+            SaidaParaFuncionarios.setVisible(true);
+        }
+    }//GEN-LAST:event_cb_estoqueActionPerformed
+
+    private void cb_relatoriosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cb_relatoriosAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_relatoriosAncestorAdded
+
+    private void cb_relatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_relatoriosActionPerformed
+        // TODO add your handling code here:
+        String selectedOption = (String)  cb_relatorios.getSelectedItem();
+
+        if ("Relatorio do Estoque".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            RELATORIO_ESTOQUE relatorioEstoque = new RELATORIO_ESTOQUE();
+            relatorioEstoque.setVisible(true);
+        } else if ("Relatorio de  Entrega".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            RELATORIO_ENTREGA_FUNCIONARIO EntregaEpiEstoque = new RELATORIO_ENTREGA_FUNCIONARIO();
+            EntregaEpiEstoque.setVisible(true);
+        }
+    }//GEN-LAST:event_cb_relatoriosActionPerformed
+
+    private void VOLTA_INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTA_INICIOActionPerformed
+CADAStro_FUNCIONARIOS.this.dispose();
+        MENU  VOLTA_INICIO = new MENU();
+         VOLTA_INICIO.setVisible(true);
+    }//GEN-LAST:event_VOLTA_INICIOActionPerformed
+
+    private void listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listasActionPerformed
+        // TODO add your handling code here:
+        String selectedOption = (String)listas.getSelectedItem();
+
+        if ("EPI em Estoque".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            LISTA_EPI_EMESTOQUE listaEstoque = new LISTA_EPI_EMESTOQUE();
+            listaEstoque.setVisible(true);
+        } else if ("Funcionarios  Cadastrados".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            LISTA_FUNCIONARIOS lisEpiEntrgue = new LISTA_FUNCIONARIOS();
+            lisEpiEntrgue.setVisible(true);
+        } else if ("EPI Entregue".equals(selectedOption)) {
+            CADAStro_FUNCIONARIOS.this.dispose();
+            EPI_ENTREGUE lisEpiEntrgue = new EPI_ENTREGUE();
+            lisEpiEntrgue.setVisible(true);
+        }
+    }//GEN-LAST:event_listasActionPerformed
+
+    private void dt_nascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dt_nascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dt_nascimentoActionPerformed
+
+    private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexoActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+ CADAStro_FUNCIONARIOS.this.dispose();
+        MENU  btn_cancelar = new MENU();
+         btn_cancelar.setVisible(true);        
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void BTN_SALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SALVARActionPerformed
+        // TODO add your handling code here:
+        String nomeFuncionario = nome.getText();
+        String dataNascimento = dt_nascimento.getText();
+        String enderecoFuncionario = endereco.getText();
+        String cargoFuncionario = cargo.getText();
+        String cpfFuncionario = txt_cpf.getText();
+        String sexoFuncionario = sexo.getText();
+        String estadoCivilFuncionario = estado_civil.getText();
+        String carteiraTrabalhoFuncionario = carteira_trabalho.getText();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
+            String sql = "INSERT INTO Funcionarios (nome, data_nascimento, endereco, cargo, cpf, sexo, estado_civil, carteira_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nomeFuncionario);
+            stmt.setString(2, dataNascimento);
+            stmt.setString(3, enderecoFuncionario);
+            stmt.setString(4, cargoFuncionario);
+            stmt.setString(5, cpfFuncionario);
+            stmt.setString(6, sexoFuncionario);
+            stmt.setString(7, estadoCivilFuncionario);
+            stmt.setString(8, carteiraTrabalhoFuncionario);
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!");
+                // Limpar os campos após o cadastro
+                nome.setText("");
+                dt_nascimento.setText("");
+                endereco.setText("");
+                cargo.setText("");
+                txt_cpf.setText("");
+                sexo.setText("");
+                estado_civil.setText("");
+                carteira_trabalho.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao cadastrar funcionário!");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_BTN_SALVARActionPerformed
+
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeActionPerformed
+
+    private void enderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enderecoActionPerformed
+
+    private void carteira_trabalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carteira_trabalhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_carteira_trabalhoActionPerformed
+
+    private void estado_civilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estado_civilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estado_civilActionPerformed
+
+    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cpfActionPerformed
+
+    private void cargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cargoActionPerformed
+
+    private void btn_mostra_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostra_listaActionPerformed
+        // TODO add your handling code here:
+         LISTA_FUNCIONARIOS listaFuncionarios = new LISTA_FUNCIONARIOS();
+        listaFuncionarios.setVisible(true);
+        listaFuncionarios.preencherTabela();
+    }//GEN-LAST:event_btn_mostra_listaActionPerformed
+
+   
     /**
      * @param args the command line arguments
      */
@@ -105,7 +404,25 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel BTN_MOTRA_LISTA;
+    private javax.swing.JButton BTN_SALVAR;
+    private javax.swing.JButton VOLTA_INICIO;
+    private javax.swing.JButton btn_MN_cadastro_F;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_mostra_lista;
+    private javax.swing.JTextField cargo;
+    private javax.swing.JTextField carteira_trabalho;
+    private javax.swing.JComboBox<String> cb_estoque;
+    private javax.swing.JComboBox<String> cb_relatorios;
+    private javax.swing.JTextField dt_nascimento;
+    private javax.swing.JTextField endereco;
+    private javax.swing.JTextField escolaridade;
+    private javax.swing.JTextField estado_civil;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JComboBox<String> listas;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField sexo;
+    private javax.swing.JTextField txt_cpf;
     // End of variables declaration//GEN-END:variables
 }
