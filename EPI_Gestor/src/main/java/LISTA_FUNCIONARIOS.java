@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,6 +21,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
 
+      public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String USER = "root"; 
+    private static final String PASSWORD = ""; 
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+    }
     /**
      * Creates new form LISTA_FUNCIONARIOS
      */
@@ -27,6 +37,49 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void preencherTabela() {
+        try {
+            // Conectar ao banco de dados
+            Connection con = DatabaseConnection.getConnection();
+            
+            // Consulta SQL para selecionar todos os funcionários
+            String sql = "SELECT * FROM Funcionarios";
+            
+            // Criar um objeto Statement para executar a consulta
+            Statement stmt = con.createStatement();
+            
+            // Executar a consulta e obter o resultado
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            // Criar um modelo de tabela padrão
+            DefaultTableModel model = (DefaultTableModel) tb_listaF.getModel();
+            
+            // Limpar todas as linhas existentes na tabela
+            model.setRowCount(0);
+            
+            // Percorrer o resultado e adicionar cada funcionário à tabela
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                String dataNascimento = rs.getString("data_nascimento");
+                String endereco = rs.getString("endereco");
+                String cargo = rs.getString("cargo");
+                String cpf = rs.getString("cpf");
+                String sexo = rs.getString("sexo");
+                String estadoCivil = rs.getString("estado_civil");
+                String carteiraTrabalho = rs.getString("carteira_trabalho");
+                
+                // Adicionar os dados do funcionário como uma nova linha na tabela
+                model.addRow(new Object[]{nome, dataNascimento, endereco, cargo, cpf, sexo, estadoCivil, carteiraTrabalho});
+            }
+            
+            // Fechar as conexões e recursos
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao preencher tabela: " + ex.getMessage());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +121,15 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
                 "Nome", "Data Nascimento", "Endereço", "Cargo"
             }
         ));
+        tb_listaF.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tb_listaFAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane2.setViewportView(tb_listaF);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 157, 760, 270));
@@ -94,9 +156,9 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 450, 150, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 150, 30));
 
-        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA_FUNCIONARIO_CADASTRADO.png"))); // NOI18N
+        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_FUNCIONARIO_CADASTRADO.png")); // NOI18N
         BTN_CANCELAR.setText("jLabel1");
         jPanel1.add(BTN_CANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 808, 509));
 
@@ -169,6 +231,10 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
          btn_cancelar.setVisible(true);           
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tb_listaFAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tb_listaFAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_listaFAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -215,37 +281,6 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
     private javax.swing.JTable tb_listaF;
     // End of variables declaration//GEN-END:variables
 
-    void preencherTabela() {
-       
-    try {
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
-        String sql = "SELECT nome, data_nascimento, endereco, cargo FROM Funcionarios";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Nome");
-        model.addColumn("Data de Nascimento");
-        model.addColumn("Endereço");
-        model.addColumn("Cargo");
-
-        while (rs.next()) {
-            Object[] row = {
-                rs.getString("nome"),
-                rs.getString("data_nascimento"),
-                rs.getString("endereco"),
-                rs.getString("cargo")
-            };
-            model.addRow(row);
-        }
-
-        tb_listaF.setModel(model);
-        con.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage());
-    }
-
-    }
 }
 
    

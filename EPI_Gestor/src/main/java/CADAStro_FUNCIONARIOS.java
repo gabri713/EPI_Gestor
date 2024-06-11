@@ -15,7 +15,15 @@ import javax.swing.JOptionPane;
  * @author vcasotti
  */
 public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
+ public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String USER = "root"; 
+    private static final String PASSWORD = ""; 
 
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+    }
     /**
      * Creates new form CADAStro_FUNCIONARIOS
      */
@@ -170,7 +178,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 btn_mostra_listaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 170, 30));
+        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 170, 30));
 
         BTN_SALVAR.setText("jButton2");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +196,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 140, 30));
 
-        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/CADASTRO DE FUNCIONARIOS.png"))); // NOI18N
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
         BTN_MOTRA_LISTA.setText("jLabel1");
         jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
 
@@ -303,7 +311,7 @@ CADAStro_FUNCIONARIOS.this.dispose();
         String carteiraTrabalhoFuncionario = carteira_trabalho.getText();
 
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/sistema", "root", "");
             String sql = "INSERT INTO Funcionarios (nome, data_nascimento, endereco, cargo, cpf, sexo, estado_civil, carteira_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, nomeFuncionario);
@@ -332,7 +340,7 @@ CADAStro_FUNCIONARIOS.this.dispose();
             }
             con.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "verifique as informaçeos: " + ex.getMessage());
         }
     }//GEN-LAST:event_BTN_SALVARActionPerformed
 

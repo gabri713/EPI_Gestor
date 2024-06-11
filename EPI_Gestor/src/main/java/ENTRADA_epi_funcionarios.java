@@ -106,7 +106,7 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
         jTextField8.setText("jTextField8");
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 240, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/EPI PRA FUNCIONARI.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\EPI PRA FUNCIONARI.png")); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 806, 518));
 

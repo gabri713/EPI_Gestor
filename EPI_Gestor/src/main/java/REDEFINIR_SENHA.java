@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
     public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String URL = "jdbc:mysql://localhost:/O_sistema"; 
     private static final String USER = "root"; 
     private static final String PASSWORD = ""; 
 
@@ -87,7 +87,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
         });
         getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 120, 30));
 
-        enviar_email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/REDEFINIR_SENHA.png"))); // NOI18N
+        enviar_email.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\REDEFINIR_SENHA.png")); // NOI18N
         enviar_email.setText("jLabel1");
         getContentPane().add(enviar_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 810, 524));
 
@@ -113,26 +113,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(fromEmail, fromEmailPassword);
-            }
-        });
 
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromEmail));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject(subject);
-            message.setText(body);
-
-            Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Email de redefinição de senha enviado com sucesso!");
-
-        } catch (MessagingException e) {
-            JOptionPane.showMessageDialog(this, "Erro ao enviar email: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            
-        }
                                          
         
     }//GEN-LAST:event_ENVIARActionPerformed

@@ -165,9 +165,9 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         });
         jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, -1, -1));
 
-        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/ENTRADA_FUNCIONARIO.png"))); // NOI18N
+        salvar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\ENTRADA_FUNCIONARIO.png")); // NOI18N
         salvar.setText("jLabel1");
-        jPanel1.add(salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 790, 480));
+        jPanel1.add(salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

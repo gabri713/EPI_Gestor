@@ -66,8 +66,8 @@ public class CRIA_CONTA extends javax.swing.JFrame {
                 txt_dataActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 200, -1));
-        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 190, -1));
+        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 200, -1));
+        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 190, -1));
 
         btn_criar.setText("jButton1");
         btn_criar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +77,7 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         });
         jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/CRIA_CONTA.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, -1));
 
@@ -104,21 +104,26 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nome = txt_nome.getText();
         String email = jTextField2.getText();
-        String data = txt_data.getText();
         String senha = new String(psf_senha.getPassword());
+         String data = txt_data.getText();
 
         String sql = "INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, nome);
-            pstmt.setString(2, email);
-            pstmt.setString(3, data);
-            pstmt.setString(4, senha);
+           pstmt.setString(1, nome); // Nome
+           pstmt.setString(2, email); // Email
+           pstmt.setString(3, data); // Data de nascimento
+           pstmt.setString(4, senha); // Senha
+
 
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
+            
+            LOGIN logar = new LOGIN();
+           logar.setVisible(true);
+           this.dispose(); // Fechar a tela atual
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao criar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
