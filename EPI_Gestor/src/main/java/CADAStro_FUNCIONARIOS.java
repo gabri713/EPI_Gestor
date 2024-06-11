@@ -132,7 +132,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 carteira_trabalhoActionPerformed(evt);
             }
         });
-        jPanel1.add(carteira_trabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
+        jPanel1.add(carteira_trabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 180, -1));
 
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,23 +146,23 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 estado_civilActionPerformed(evt);
             }
         });
-        jPanel1.add(estado_civil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
-        jPanel1.add(escolaridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, -1, -1));
+        jPanel1.add(estado_civil, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 170, 30));
+        jPanel1.add(escolaridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, 120, 30));
 
         cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargoActionPerformed(evt);
             }
         });
-        jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, -1, -1));
+        jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(674, 430, 120, 30));
 
         txt_cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cpfActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, -1));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, -1, -1));
+        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 430, 130, 30));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 120, 20));
 
         btn_mostra_lista.setText("jButton1");
         btn_mostra_lista.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 140, 30));
 
-        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/CADASTRO DE FUNCIONARIOS.png"))); // NOI18N
         BTN_MOTRA_LISTA.setText("jLabel1");
         jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
 

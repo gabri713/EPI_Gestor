@@ -91,31 +91,22 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 150, 50));
-
-        NOME_COLABORADOR.setText("jTextField1");
         jPanel1.add(NOME_COLABORADOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 250, -1));
 
-        IP_EPI.setText("jTextField2");
         IP_EPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IP_EPIActionPerformed(evt);
             }
         });
         jPanel1.add(IP_EPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 240, -1));
-
-        jTextField5.setText("jTextField5");
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 262, 250, 30));
-
-        jTextField6.setText("jTextField6");
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 262, 250, 30));
-
-        jTextField7.setText("jTextField7");
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 260, -1));
 
         jTextField8.setText("jTextField8");
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 240, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\EPI PRA FUNCIONARI.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/EPI PRA FUNCIONARI.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 806, 518));
 
@@ -124,16 +115,15 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

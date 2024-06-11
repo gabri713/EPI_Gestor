@@ -1,5 +1,6 @@
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +10,22 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author vcasotti
  */
 public class LOGIN extends javax.swing.JFrame {
+    public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String USER = "root"; 
+    private static final String PASSWORD = ""; 
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+    }
+
+   
 
     /**
      * Creates new form LOGIN
@@ -22,6 +33,7 @@ public class LOGIN extends javax.swing.JFrame {
     public LOGIN() {
         initComponents();
     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,7 +81,7 @@ public class LOGIN extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LOGN.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 806, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,3 +187,4 @@ public class LOGIN extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Email;
     // End of variables declaration//GEN-END:variables
 }
+

@@ -96,7 +96,7 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 450, 150, 30));
 
-        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_FUNCIONARIO_CADASTRADO.png")); // NOI18N
+        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA_FUNCIONARIO_CADASTRADO.png"))); // NOI18N
         BTN_CANCELAR.setText("jLabel1");
         jPanel1.add(BTN_CANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 808, 509));
 

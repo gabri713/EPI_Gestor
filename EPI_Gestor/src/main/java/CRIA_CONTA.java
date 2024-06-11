@@ -1,8 +1,10 @@
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,6 +17,20 @@ import javax.swing.JOptionPane;
  */
 public class CRIA_CONTA extends javax.swing.JFrame {
 
+    public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:/sistema";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Driver JDBC não encontrado", e);
+        }
+    }
+}
     /**
      * Creates new form CRIA_CONTA
      */
@@ -42,18 +58,16 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 190, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 190, -1));
 
-        txt_nome.setText("jTextField1");
-        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
-
-        jTextField2.setText("txt_email");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
-
-        txt_data.setText("jTextField4");
-        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, -1, -1));
-
-        psf_senha.setText("jPasswordField1");
-        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, -1));
+        txt_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_dataActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 200, -1));
+        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 190, -1));
 
         btn_criar.setText("jButton1");
         btn_criar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +126,10 @@ public class CRIA_CONTA extends javax.swing.JFrame {
     
 
     }//GEN-LAST:event_btn_criarActionPerformed
+
+    private void txt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dataActionPerformed
 
     /**
      * @param args the command line arguments

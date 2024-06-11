@@ -1,13 +1,20 @@
 
 import com.sun.jdi.connect.Transport;
 import java.net.PasswordAuthentication;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+
 
 /**
  *
@@ -15,6 +22,16 @@ import javax.swing.JOptionPane;
  */
 public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
+    public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String USER = "root"; 
+    private static final String PASSWORD = ""; 
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+    }
+    
     /**
      * Creates new form REDEFINIR_SENHA
      */
@@ -68,7 +85,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
                 ENVIARActionPerformed(evt);
             }
         });
-        getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 343, 120, 30));
+        getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 120, 30));
 
         enviar_email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/REDEFINIR_SENHA.png"))); // NOI18N
         enviar_email.setText("jLabel1");
@@ -83,6 +100,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
     private void ENVIARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENVIARActionPerformed
         // TODO add your handling code here:]
+        
          String toEmail = EMAIL.getText();
         String fromEmail = "seuemail@gmail.com"; // Altere para seu email
         String fromEmailPassword = "suasenha"; // Altere para a senha do seu email
@@ -113,6 +131,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
         } catch (MessagingException e) {
             JOptionPane.showMessageDialog(this, "Erro ao enviar email: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            
         }
                                          
         

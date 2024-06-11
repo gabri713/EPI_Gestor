@@ -32,6 +32,8 @@ public class MENU extends javax.swing.JFrame {
         cb_relatorios = new javax.swing.JComboBox<>();
         listas = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,9 +100,16 @@ public class MENU extends javax.swing.JFrame {
         });
         getContentPane().add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, 70));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\MENU.png")); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 847, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/MENU.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 490));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 760, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -213,7 +222,9 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton btn_MN_cadastro_F;
     private javax.swing.JComboBox<String> cb_estoque;
     private javax.swing.JComboBox<String> cb_relatorios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JComboBox<String> listas;
     // End of variables declaration//GEN-END:variables
