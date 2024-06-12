@@ -84,7 +84,7 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 502));
 

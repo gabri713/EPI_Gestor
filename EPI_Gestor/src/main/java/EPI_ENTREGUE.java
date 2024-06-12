@@ -28,6 +28,8 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         VOLTA_INICIO = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_epiENtregue = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
@@ -42,11 +44,26 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel2.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 40));
+        jPanel2.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 70, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
+        tb_epiENtregue.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID DO EPI", "NOME DO FUNCIONARIO", "NOME DO EPI", "QUANTIDADE"
+            }
+        ));
+        jScrollPane1.setViewportView(tb_epiENtregue);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 730, 270));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 802, 490));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 802, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,7 +78,7 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -114,5 +131,7 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tb_epiENtregue;
     // End of variables declaration//GEN-END:variables
 }

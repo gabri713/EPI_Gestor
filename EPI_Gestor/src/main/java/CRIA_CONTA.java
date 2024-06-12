@@ -58,16 +58,16 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 190, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 190, -1));
+        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 190, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 190, -1));
 
         txt_data.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_dataActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 200, -1));
-        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 190, -1));
+        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 200, -1));
+        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 190, -1));
 
         btn_criar.setText("jButton1");
         btn_criar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,11 +75,11 @@ public class CRIA_CONTA extends javax.swing.JFrame {
                 btn_criarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, -1, -1));
+        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,42 +94,44 @@ public class CRIA_CONTA extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_criarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_criarActionPerformed
-        // TODO add your handling code here:
-        String nome = txt_nome.getText();
-        String email = jTextField2.getText();
-        String senha = new String(psf_senha.getPassword());
-         String data = txt_data.getText();
+       String nome = txt_nome.getText();
+String email = jTextField2.getText();
+String senha = new String(psf_senha.getPassword());
+String data = txt_data.getText();
 
-        String sql = "INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?)";
+// Verifica se algum dos campos está vazio
+if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || data.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+    return; // Sai do método sem tentar inserir no banco de dados
+}
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+String sql = "INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?)";
 
-           pstmt.setString(1, nome); // Nome
-           pstmt.setString(2, email); // Email
-           pstmt.setString(3, data); // Data de nascimento
-           pstmt.setString(4, senha); // Senha
+try (Connection conn = DatabaseConnection.getConnection();
+     PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
+   pstmt.setString(1, nome); // Nome
+   pstmt.setString(2, email); // Email
+   pstmt.setString(3, data); // Data de nascimento
+   pstmt.setString(4, senha); // Senha
 
-            pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
-            
-            LOGIN logar = new LOGIN();
-           logar.setVisible(true);
-           this.dispose(); // Fechar a tela atual
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro ao criar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+    pstmt.executeUpdate();
+    JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
     
+    LOGIN logar = new LOGIN();
+    logar.setVisible(true);
+    this.dispose(); // Fechar a tela atual
 
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(this, "Erro ao criar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+}
     }//GEN-LAST:event_btn_criarActionPerformed
 
     private void txt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataActionPerformed

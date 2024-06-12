@@ -132,7 +132,7 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tb_listaF);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 157, 760, 270));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 760, 270));
 
         BTN_SALVAR.setText("jButton1");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
                 BTN_SALVARActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 100, 30));
+        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 100, 30));
 
         BTN_EDITAR.setText("jButton2");
         BTN_EDITAR.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +158,7 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 150, 30));
 
-        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_FUNCIONARIO_CADASTRADO.png")); // NOI18N
+        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_FUNCIONARIO_CADASTRADO.png")); // NOI18N
         BTN_CANCELAR.setText("jLabel1");
         jPanel1.add(BTN_CANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 808, 509));
 
@@ -166,15 +166,11 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 290, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 56, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

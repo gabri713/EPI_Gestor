@@ -23,18 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="290" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -64,7 +58,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="22" y="157" width="760" height="270"/>
+              <AbsoluteConstraints x="10" y="160" width="760" height="270"/>
             </Constraint>
           </Constraints>
 
@@ -123,7 +117,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="170" y="450" width="100" height="30"/>
+              <AbsoluteConstraints x="160" y="450" width="100" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -156,7 +150,7 @@
         <Component class="javax.swing.JLabel" name="BTN_CANCELAR">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\vitor\Desktop\EPI_gestor\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\LISTA_FUNCIONARIO_CADASTRADO.png"/>
+              <Image iconType="2" name="D:\Users\vcasotti\Desktop\Nova pasta\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\LISTA_FUNCIONARIO_CADASTRADO.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

@@ -54,14 +54,14 @@ public class LOGIN extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 220, 30));
+        jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 220, 30));
 
         txt_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_EmailActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 210, 30));
+        jPanel1.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 220, 30));
 
         btn_logar.setText("jButton1");
         btn_logar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +69,7 @@ public class LOGIN extends javax.swing.JFrame {
                 btn_logarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 130, 30));
+        jPanel1.add(btn_logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 130, 30));
 
         btn_esqueci_senha.setText("jButton2");
         btn_esqueci_senha.addActionListener(new java.awt.event.ActionListener() {
@@ -77,11 +77,11 @@ public class LOGIN extends javax.swing.JFrame {
                 btn_esqueci_senhaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 353, 120, 30));
+        jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 130, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, 390));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,14 +90,14 @@ public class LOGIN extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
