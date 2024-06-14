@@ -3,7 +3,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -29,6 +33,21 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
      */
     public CADAStro_FUNCIONARIOS() {
         initComponents();
+
+ try {
+            // Máscara para CPF
+            MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
+            maskCPF.setPlaceholderCharacter('_');
+            maskCPF.install((JFormattedTextField) txt_cpf);
+
+            // Máscara para data de nascimento
+            MaskFormatter maskDataNascimento = new MaskFormatter("##/##/####");
+            maskDataNascimento.setPlaceholderCharacter('_');
+            maskDataNascimento.install((JFormattedTextField) dt_nascimento);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -47,18 +66,18 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         VOLTA_INICIO = new javax.swing.JButton();
         listas = new javax.swing.JComboBox<>();
         nome = new javax.swing.JTextField();
-        dt_nascimento = new javax.swing.JTextField();
         endereco = new javax.swing.JTextField();
         carteira_trabalho = new javax.swing.JTextField();
         sexo = new javax.swing.JTextField();
         estado_civil = new javax.swing.JTextField();
         escolaridade = new javax.swing.JTextField();
         cargo = new javax.swing.JTextField();
-        txt_cpf = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
         btn_mostra_lista = new javax.swing.JButton();
         BTN_SALVAR = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        dt_nascimento = new javax.swing.JFormattedTextField();
+        txt_cpf = new javax.swing.JFormattedTextField();
         BTN_MOTRA_LISTA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,13 +140,6 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 440, -1));
 
-        dt_nascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dt_nascimentoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(dt_nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 430, -1));
-
         endereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enderecoActionPerformed(evt);
@@ -163,13 +175,6 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 120, 20));
-
-        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cpfActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 130, 20));
         jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 120, 20));
 
         btn_mostra_lista.setText("jButton1");
@@ -178,7 +183,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 btn_mostra_listaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 170, 30));
+        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 170, 30));
 
         BTN_SALVAR.setText("jButton2");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +201,15 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 140, 30));
 
-        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
+        dt_nascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dt_nascimentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dt_nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 450, -1));
+        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, -1));
+
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
         BTN_MOTRA_LISTA.setText("jLabel1");
         jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
 
@@ -285,10 +298,6 @@ CADAStro_FUNCIONARIOS.this.dispose();
         }
     }//GEN-LAST:event_listasActionPerformed
 
-    private void dt_nascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dt_nascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dt_nascimentoActionPerformed
-
     private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoActionPerformed
@@ -300,54 +309,73 @@ CADAStro_FUNCIONARIOS.this.dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void BTN_SALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SALVARActionPerformed
-        String nomeFuncionario = nome.getText();
-String dataNascimento = dt_nascimento.getText();
-String enderecoFuncionario = endereco.getText();
-String cargoFuncionario = cargo.getText();
-String cpfFuncionario = txt_cpf.getText();
-String sexoFuncionario = sexo.getText();
-String estadoCivilFuncionario = estado_civil.getText();
-String carteiraTrabalhoFuncionario = carteira_trabalho.getText();
+           String nomeFuncionario = nome.getText();
+        String dataNascimento = dt_nascimento.getText();
+        String enderecoFuncionario = endereco.getText();
+        String cargoFuncionario = cargo.getText();
+        String cpfFuncionario = txt_cpf.getText();
+        String sexoFuncionario = sexo.getText();
+        String estadoCivilFuncionario = estado_civil.getText();
+        String carteiraTrabalhoFuncionario = carteira_trabalho.getText();
 
-// Validação: Verificar se algum campo está vazio
-if (nomeFuncionario.isEmpty() || dataNascimento.isEmpty() || enderecoFuncionario.isEmpty() || 
-    cargoFuncionario.isEmpty() || cpfFuncionario.isEmpty() || sexoFuncionario.isEmpty() || 
-    estadoCivilFuncionario.isEmpty() || carteiraTrabalhoFuncionario.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos!");
-} else {
-    try {
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/sistema", "root", "");
-        String sql = "INSERT INTO Funcionarios (nome, data_nascimento, endereco, cargo, cpf, sexo, estado_civil, carteira_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, nomeFuncionario);
-        stmt.setString(2, dataNascimento);
-        stmt.setString(3, enderecoFuncionario);
-        stmt.setString(4, cargoFuncionario);
-        stmt.setString(5, cpfFuncionario);
-        stmt.setString(6, sexoFuncionario);
-        stmt.setString(7, estadoCivilFuncionario);
-        stmt.setString(8, carteiraTrabalhoFuncionario);
-        int rowsAffected = stmt.executeUpdate();
-
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!");
-            // Limpar os campos após o cadastro
-            nome.setText("");
-            dt_nascimento.setText("");
-            endereco.setText("");
-            cargo.setText("");
-            txt_cpf.setText("");
-            sexo.setText("");
-            estado_civil.setText("");
-            carteira_trabalho.setText("");
+        // Validação: Verificar se algum campo está vazio
+        if (nomeFuncionario.isEmpty() || dataNascimento.isEmpty() || enderecoFuncionario.isEmpty() ||
+                cargoFuncionario.isEmpty() || cpfFuncionario.isEmpty() || sexoFuncionario.isEmpty() ||
+                estadoCivilFuncionario.isEmpty() || carteiraTrabalhoFuncionario.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos!");
+        } else if (!cpfFuncionario.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")) { // Verifica se o CPF está no formato correto
+            JOptionPane.showMessageDialog(this, "O CPF deve estar no formato correto: ###.###.###-##");
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao cadastrar funcionário!");
+            try {
+                // Conectar ao banco de dados
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/sistema", "root", "");
+
+                // Formatador para a data de nascimento
+                SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+                java.util.Date data = formatadorData.parse(dataNascimento);
+                java.sql.Date dataSql = new java.sql.Date(data.getTime());
+
+                // Preparar a inserção dos dados na tabela Funcionarios
+                String sql = "INSERT INTO Funcionarios (nome, data_nascimento, endereco, cargo, cpf, sexo, estado_civil, carteira_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmt = con.prepareStatement(sql);
+                stmt.setString(1, nomeFuncionario);
+                stmt.setDate(2, dataSql); // data_nascimento
+                stmt.setString(3, enderecoFuncionario);
+                stmt.setString(4, cargoFuncionario);
+                stmt.setString(5, cpfFuncionario);
+                stmt.setString(6, sexoFuncionario);
+                stmt.setString(7, estadoCivilFuncionario);
+                stmt.setString(8, carteiraTrabalhoFuncionario);
+
+                // Executar a inserção dos dados
+                int rowsAffected = stmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!");
+                    limparCampos(); // Limpar os campos após o cadastro ser bem-sucedido
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao cadastrar funcionário!");
+                }
+                con.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage());
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(this, "Data de nascimento inválida. Informe no formato dd/MM/yyyy.");
+            }
         }
-        con.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Verifique as informações: " + ex.getMessage());
     }
-}
+
+    // Método para limpar os campos
+    private void limparCampos() {
+        nome.setText("");
+        dt_nascimento.setText("");
+        endereco.setText("");
+        cargo.setText("");
+        txt_cpf.setText("");
+        sexo.setText("");
+        estado_civil.setText("");
+        carteira_trabalho.setText("");
+    
     }//GEN-LAST:event_BTN_SALVARActionPerformed
 
     private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
@@ -366,10 +394,6 @@ if (nomeFuncionario.isEmpty() || dataNascimento.isEmpty() || enderecoFuncionario
         // TODO add your handling code here:
     }//GEN-LAST:event_estado_civilActionPerformed
 
-    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cpfActionPerformed
-
     private void cargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cargoActionPerformed
@@ -380,6 +404,10 @@ if (nomeFuncionario.isEmpty() || dataNascimento.isEmpty() || enderecoFuncionario
         listaFuncionarios.setVisible(true);
         listaFuncionarios.preencherTabela();
     }//GEN-LAST:event_btn_mostra_listaActionPerformed
+
+    private void dt_nascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dt_nascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dt_nascimentoActionPerformed
 
    
     /**
@@ -428,7 +456,7 @@ if (nomeFuncionario.isEmpty() || dataNascimento.isEmpty() || enderecoFuncionario
     private javax.swing.JTextField carteira_trabalho;
     private javax.swing.JComboBox<String> cb_estoque;
     private javax.swing.JComboBox<String> cb_relatorios;
-    private javax.swing.JTextField dt_nascimento;
+    private javax.swing.JFormattedTextField dt_nascimento;
     private javax.swing.JTextField endereco;
     private javax.swing.JTextField escolaridade;
     private javax.swing.JTextField estado_civil;
@@ -437,6 +465,6 @@ if (nomeFuncionario.isEmpty() || dataNascimento.isEmpty() || enderecoFuncionario
     private javax.swing.JComboBox<String> listas;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField sexo;
-    private javax.swing.JTextField txt_cpf;
+    private javax.swing.JFormattedTextField txt_cpf;
     // End of variables declaration//GEN-END:variables
 }

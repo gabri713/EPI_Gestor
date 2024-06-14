@@ -1,3 +1,15 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,12 +21,67 @@
  */
 public class LISTA_EPI_EMESTOQUE extends javax.swing.JFrame {
 
+    public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String USER = "root"; 
+    private static final String PASSWORD = ""; 
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+    }
     /**
      * Creates new form LISTA_EPI_EMESTOQUE
      */
     public LISTA_EPI_EMESTOQUE() {
         initComponents();
+       
     }
+     public void preencherTabela2() {
+    
+    
+       try {
+        // Conectar ao banco de dados
+        Connection con = LISTA_EPI_EMESTOQUE.DatabaseConnection.getConnection();
+        
+        // Consulta SQL para selecionar todas as entradas de EPI
+        String sql = "SELECT fornecedor, id_epi, tipo_epi, quantidade, dt_entrada, validade FROM EntradaEPI";
+        
+        // Criar um objeto Statement para executar a consulta
+        Statement stmt = con.createStatement();
+        
+        // Executar a consulta e obter o resultado
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        // Criar um modelo de tabela padrão
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        // Limpar todas as linhas existentes na tabela
+        model.setRowCount(0);
+        
+        // Percorrer o resultado e adicionar cada entrada de EPI à tabela
+        while (rs.next()) {
+            String fornecedor = rs.getString("fornecedor");
+            int idEPI = rs.getInt("id_epi");
+            String tipoEPI = rs.getString("tipo_epi");
+            int quantidade = rs.getInt("quantidade");
+            Date dt_entrada = rs.getDate("dt_entrada");
+            Date validade = rs.getDate("validade");
+            
+            // Adicionar os dados da entrada de EPI como uma nova linha na tabela
+            model.addRow(new Object[]{fornecedor, idEPI, tipoEPI, quantidade, dt_entrada, validade});
+        }
+        
+        // Fechar as conexões e recursos
+        rs.close();
+        stmt.close();
+        con.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Erro ao preencher tabela: " + ex.getMessage());
+    }
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,7 +94,7 @@ public class LISTA_EPI_EMESTOQUE extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         VOLTA_INICIO = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
@@ -46,20 +113,22 @@ public class LISTA_EPI_EMESTOQUE extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fornecedor", "ID do EPI", "Tipo do EPI", "Quantidade", "Data de Entrada", "Validade"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 730, 270));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 700, 270));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA_EPIS.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_EPIS.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 509));
 
@@ -68,6 +137,8 @@ public class LISTA_EPI_EMESTOQUE extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        
+    
     private void VOLTA_INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTA_INICIOActionPerformed
         // TODO add your handling code here:
          MENU  VOLTA_INICIO = new MENU();
@@ -114,7 +185,7 @@ public class LISTA_EPI_EMESTOQUE extends javax.swing.JFrame {
     private javax.swing.JButton VOLTA_INICIO;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,3 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,13 +18,67 @@
  * @author vcasotti
  */
 public class EPI_ENTREGUE extends javax.swing.JFrame {
+    
+     private static class DatabaseConnection {
+        private static final String URL = "jdbc:mysql://localhost:3306/sistema";
+        private static final String USER = "root";
+        private static final String PASSWORD = "";
+
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }
+    }
 
     /**
      * Creates new form EPI_ENTREGUE
      */
     public EPI_ENTREGUE() {
-        initComponents();
+         initComponents();
+         
     }
+
+     public void preencherTabela3() {
+       
+        try {
+            // Conectar ao banco de dados
+            Connection con = DatabaseConnection.getConnection();
+
+            // Consulta SQL para selecionar todas as entradas de EPI para funcionários
+            String sql = "SELECT id_epi, nome_funcionario, nome_epi, quantidade FROM epi_para_funcionarios";
+
+            // Criar um objeto Statement para executar a consulta
+            Statement stmt = con.createStatement();
+
+            // Executar a consulta e obter o resultado
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Criar um modelo de tabela padrão
+            DefaultTableModel model = (DefaultTableModel) tb_epiENtregue.getModel();
+
+            // Limpar todas as linhas existentes na tabela
+            model.setRowCount(0);
+
+            // Percorrer o resultado e adicionar cada entrada de EPI para funcionários à tabela
+            while (rs.next()) {
+                int idEPI = rs.getInt("id_epi");
+                String nomeFuncionario = rs.getString("nome_funcionario");
+                String nomeEPI = rs.getString("nome_epi");
+                int quantidade = rs.getInt("quantidade");
+
+                // Adicionar os dados da entrada de EPI como uma nova linha na tabela
+                model.addRow(new Object[]{idEPI, nomeFuncionario, nomeEPI, quantidade});
+            }
+
+            // Fechar as conexões e recursos
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao preencher tabela: " + ex.getMessage());
+        }
+    }
+     
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +108,7 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel2.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 70, 70));
+        jPanel2.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 70));
 
         tb_epiENtregue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,7 +125,7 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 730, 270));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 802, 480));
 

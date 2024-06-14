@@ -1,9 +1,17 @@
 
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,12 +23,38 @@ import javax.swing.JOptionPane;
  * @author vitor
  */
 public class ENTRADA_pei_estoque extends javax.swing.JFrame {
-
+ private SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
     /**
      * Creates new form ENTRADA_pei_estoque
      */
     public ENTRADA_pei_estoque() {
         initComponents();
+        try {
+            MaskFormatter maskDataEntrada = new MaskFormatter("##/##/####");
+            maskDataEntrada.setPlaceholderCharacter('_');
+            maskDataEntrada.install(jFormatted_data_entrada);
+
+            MaskFormatter maskDataValidade = new MaskFormatter("##/##/####");
+            maskDataValidade.setPlaceholderCharacter('_');
+            maskDataValidade.install(jFormatted_validade);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    
+       
+    
+    }
+    
+    
+     public class DatabaseConnection {
+    
+    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
+    private static final String USER = "root"; 
+    private static final String PASSWORD = ""; 
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
     }
 
     /**
@@ -33,7 +67,7 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_proximo = new javax.swing.JButton();
+        btn_mostalistaestoq = new javax.swing.JButton();
         VOLTA_INICIO = new javax.swing.JButton();
         btn_MN_cadastro_F = new javax.swing.JButton();
         cb_estoque = new javax.swing.JComboBox<>();
@@ -41,24 +75,24 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         listas = new javax.swing.JComboBox<>();
         TXT_tipoEPI = new javax.swing.JTextField();
         txt_quantidade = new javax.swing.JTextField();
-        txt_IDpedido = new javax.swing.JTextField();
-        txt_validade = new javax.swing.JTextField();
+        txt_ID_EPI = new javax.swing.JTextField();
         txt_Fonercedor = new javax.swing.JTextField();
-        txt_DT_entrada = new javax.swing.JTextField();
-        BTN_SALVAR = new javax.swing.JButton();
+        jFormatted_validade = new javax.swing.JFormattedTextField();
+        jFormatted_data_entrada = new javax.swing.JFormattedTextField();
+        salva2 = new javax.swing.JButton();
         salvar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_proximo.setText("jButton1");
-        btn_proximo.addActionListener(new java.awt.event.ActionListener() {
+        btn_mostalistaestoq.setText("jButton1");
+        btn_mostalistaestoq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_proximoActionPerformed(evt);
+                btn_mostalistaestoqActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_proximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 190, 30));
+        jPanel1.add(btn_mostalistaestoq, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 190, 30));
 
         VOLTA_INICIO.setText("jButton1");
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +143,6 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         });
         jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 390, -1, 70));
 
-        TXT_tipoEPI.setText("jTextField1");
         TXT_tipoEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_tipoEPIActionPerformed(evt);
@@ -117,7 +150,6 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         });
         jPanel1.add(TXT_tipoEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 162, 220, 30));
 
-        txt_quantidade.setText("jTextField2");
         txt_quantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_quantidadeActionPerformed(evt);
@@ -125,23 +157,13 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         });
         jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 160, 250, -1));
 
-        txt_IDpedido.setText("jTextField3");
-        txt_IDpedido.addActionListener(new java.awt.event.ActionListener() {
+        txt_ID_EPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_IDpedidoActionPerformed(evt);
+                txt_ID_EPIActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_IDpedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 230, -1));
+        jPanel1.add(txt_ID_EPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 230, -1));
 
-        txt_validade.setText("jTextField4");
-        txt_validade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_validadeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 240, -1));
-
-        txt_Fonercedor.setText("jTextField5");
         txt_Fonercedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_FonercedorActionPerformed(evt);
@@ -149,23 +171,29 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         });
         jPanel1.add(txt_Fonercedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 230, -1));
 
-        txt_DT_entrada.setText("jTextField6");
-        txt_DT_entrada.addActionListener(new java.awt.event.ActionListener() {
+        jFormatted_validade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_DT_entradaActionPerformed(evt);
+                jFormatted_validadeActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_DT_entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 240, -1));
+        jPanel1.add(jFormatted_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 230, -1));
 
-        BTN_SALVAR.setText("SALVAR");
-        BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
+        jFormatted_data_entrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_SALVARActionPerformed(evt);
+                jFormatted_data_entradaActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
+        jPanel1.add(jFormatted_data_entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 220, -1));
 
-        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/ENTRADA_FUNCIONARIO.png"))); // NOI18N
+        salva2.setText("salvar");
+        salva2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salva2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salva2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
+
+        salvar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\ENTRADA_FUNCIONARIO.png")); // NOI18N
         salvar.setText("jLabel1");
         jPanel1.add(salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 510));
 
@@ -189,29 +217,11 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_proximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proximoActionPerformed
-                                                
-    // Implemente o código para passar para a próxima tela apenas se os dados estiverem salvos
-    // Você pode adicionar uma verificação aqui, por exemplo:
-    
-    // Verificar se os dados foram salvos com sucesso
-    boolean dadosSalvos = dadosForamSalvos();
-    
-    // Se os dados foram salvos com sucesso, passar para a próxima tela
-    if (dadosSalvos) {
-        passarParaProximaTela();
-    } else {
-        JOptionPane.showMessageDialog(this, "Por favor, salve os dados antes de prosseguir.");
-    }
-}
-
-private boolean dadosForamSalvos() {
-    // Implemente a lógica para verificar se os dados foram salvos com sucesso
-    // Por exemplo, você pode verificar se os campos obrigatórios foram preenchidos corretamente
-    // e se a inserção no banco de dados foi bem-sucedida.
-    // Por enquanto, retornaremos true apenas para fins de exemplo.
-    return true;      
-    }//GEN-LAST:event_btn_proximoActionPerformed
+    private void btn_mostalistaestoqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostalistaestoqActionPerformed
+           LISTA_EPI_EMESTOQUE listaemEStoque = new LISTA_EPI_EMESTOQUE();
+        listaemEStoque.setVisible(true);
+        listaemEStoque.preencherTabela2();
+    }//GEN-LAST:event_btn_mostalistaestoqActionPerformed
 
     private void VOLTA_INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTA_INICIOActionPerformed
         ENTRADA_pei_estoque.this.dispose();
@@ -275,10 +285,6 @@ private boolean dadosForamSalvos() {
         }
     }//GEN-LAST:event_listasActionPerformed
 
-    private void txt_validadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_validadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_validadeActionPerformed
-
     private void TXT_tipoEPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_tipoEPIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TXT_tipoEPIActionPerformed
@@ -287,52 +293,149 @@ private boolean dadosForamSalvos() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_quantidadeActionPerformed
 
-    private void txt_IDpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IDpedidoActionPerformed
+    private void txt_ID_EPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ID_EPIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_IDpedidoActionPerformed
+    }//GEN-LAST:event_txt_ID_EPIActionPerformed
 
     private void txt_FonercedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FonercedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_FonercedorActionPerformed
 
-    private void txt_DT_entradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DT_entradaActionPerformed
+    private void jFormatted_data_entradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormatted_data_entradaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_DT_entradaActionPerformed
+    }//GEN-LAST:event_jFormatted_data_entradaActionPerformed
 
-    private void BTN_SALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SALVARActionPerformed
+    private void jFormatted_validadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormatted_validadeActionPerformed
         // TODO add your handling code here:
-         String validade = txt_validade.getText();
-    String tipoEPI = TXT_tipoEPI.getText();
+    }//GEN-LAST:event_jFormatted_validadeActionPerformed
+
+    private void salva2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salva2ActionPerformed
+    
+   String tipoEPI = TXT_tipoEPI.getText();
     String quantidade = txt_quantidade.getText();
-    String IDpedido = txt_IDpedido.getText();
+    String idEPI = txt_ID_EPI.getText();
     String fornecedor = txt_Fonercedor.getText();
-    String dataEntrada = txt_DT_entrada.getText();
 
-    // Conectar ao banco de dados e inserir os valores
+    // Captura as datas formatadas
+    Date dt_entrada = null;
+    Date validade = null;
+
     try {
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
-        String sql = "INSERT INTO SuaTabela (validade, tipoEPI, quantidade, IDpedido, fornecedor, dataEntrada) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, validade);
-        stmt.setString(2, tipoEPI);
-        stmt.setString(3, quantidade);
-        stmt.setString(4, IDpedido);
-        stmt.setString(5, fornecedor);
-        stmt.setString(6, dataEntrada);
-        
-        int rowsAffected = stmt.executeUpdate();
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar os dados!");
+        dt_entrada = formatoData.parse(jFormatted_data_entrada.getText());
+        validade = formatoData.parse(jFormatted_validade.getText());
+    } catch (ParseException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, insira datas válidas no formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validação: Verificar se algum campo está vazio
+    if (tipoEPI.isEmpty() || quantidade.isEmpty() || idEPI.isEmpty() || fornecedor.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Verifica se o ID do EPI é um número válido
+    try {
+        int idEpiInt = Integer.parseInt(idEPI); // Tentativa de converter para inteiro
+        if (idEpiInt <= 0) {
+            JOptionPane.showMessageDialog(this, "ID do EPI deve ser um número maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+       try {
+           // Verificar se o ID do EPI já existe no banco de dados
+           if (idEPIJaCadastrado(idEpiInt)) {
+               JOptionPane.showMessageDialog(this, "ID do EPI já cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+               return;
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(ENTRADA_pei_estoque.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID do EPI deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Verifica se a quantidade é um número válido
+    try {
+        int quantidadeInt = Integer.parseInt(quantidade); // Tentativa de converter para inteiro
+        if (quantidadeInt <= 0) {
+            JOptionPane.showMessageDialog(this, "A quantidade deve ser um número maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "A quantidade deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Verifica a validade da data
+    if (validade.before(dt_entrada)) {
+        JOptionPane.showMessageDialog(this, "A data de validade deve ser posterior à data de entrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        Connection con = DatabaseConnection.getConnection();
         
+        // Verifica se o ID do EPI já está cadastrado
+        if (idEPIJaCadastrado(Integer.parseInt(idEPI))) {
+            JOptionPane.showMessageDialog(this, "ID do EPI já cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+            con.close();
+            return;
+        }
+
+        String sql = "INSERT INTO EntradaEPI (id_epi, validade, tipo_epi, quantidade, fornecedor, dt_entrada) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement stmt = con.prepareStatement(sql);
+
+        // Define os parâmetros do PreparedStatement
+        stmt.setInt(1, Integer.parseInt(idEPI)); // id_epi
+        stmt.setDate(2, new java.sql.Date(validade.getTime())); // validade
+        stmt.setString(3, tipoEPI); // tipo_epi
+        stmt.setInt(4, Integer.parseInt(quantidade)); // quantidade
+        stmt.setString(5, fornecedor); // fornecedor
+        stmt.setDate(6, new java.sql.Date(dt_entrada.getTime())); // dt_entrada
+
+        // Executa o comando SQL
+        int rowsAffected = stmt.executeUpdate();
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(this, "EPI cadastrado com sucesso.");
+            limparCampos(); // Limpa os campos somente após o cadastro ser bem-sucedido
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar EPI.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
         con.close();
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage());
+        JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
-    }//GEN-LAST:event_BTN_SALVARActionPerformed
+}
 
+private boolean idEPIJaCadastrado(int idEPI) throws SQLException {
+    Connection con = DatabaseConnection.getConnection();
+    String sql = "SELECT id_epi FROM EntradaEPI WHERE id_epi = ?";
+    PreparedStatement stmt = con.prepareStatement(sql);
+    stmt.setInt(1, idEPI);
+    ResultSet rs = stmt.executeQuery();
+    boolean cadastrado = rs.next(); // Se existir algum resultado, já está cadastrado
+    con.close();
+    return cadastrado;
+}
+
+private void limparCampos() {
+    TXT_tipoEPI.setText("");
+    txt_quantidade.setText("");
+    txt_ID_EPI.setText("");
+    txt_Fonercedor.setText("");
+    jFormatted_data_entrada.setValue(null);
+    jFormatted_validade.setValue(null);
+
+    
+    }//GEN-LAST:event_salva2ActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -369,29 +472,22 @@ private boolean dadosForamSalvos() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTN_SALVAR;
     private javax.swing.JTextField TXT_tipoEPI;
     private javax.swing.JButton VOLTA_INICIO;
     private javax.swing.JButton btn_MN_cadastro_F;
-    private javax.swing.JButton btn_proximo;
+    private javax.swing.JButton btn_mostalistaestoq;
     private javax.swing.JComboBox<String> cb_estoque;
     private javax.swing.JComboBox<String> cb_relatorios;
+    private javax.swing.JFormattedTextField jFormatted_data_entrada;
+    private javax.swing.JFormattedTextField jFormatted_validade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listas;
+    private javax.swing.JButton salva2;
     private javax.swing.JLabel salvar;
-    private javax.swing.JTextField txt_DT_entrada;
     private javax.swing.JTextField txt_Fonercedor;
-    private javax.swing.JTextField txt_IDpedido;
+    private javax.swing.JTextField txt_ID_EPI;
     private javax.swing.JTextField txt_quantidade;
-    private javax.swing.JTextField txt_validade;
     // End of variables declaration//GEN-END:variables
 
-    private void passarParaProximaTela() {
-        // Criar e exibir a próxima tela
-    PASSO_2_ENTRADA_EPI telaPasso2 = new PASSO_2_ENTRADA_EPI();
-    telaPasso2.setVisible(true);
     
-    // Fechar a tela atual
-    this.dispose();
-}
 }

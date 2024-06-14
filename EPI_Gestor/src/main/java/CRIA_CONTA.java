@@ -1,9 +1,20 @@
 
+import static com.mysql.cj.conf.PropertyKey.PASSWORD;
+import static com.mysql.cj.conf.PropertyKey.USER;
+import java.net.URL;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 
 /*
@@ -15,8 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author vcasotti
  */
-public class CRIA_CONTA extends javax.swing.JFrame {
-
+public class CRIA_CONTA extends javax.swing.JFrame {  
     public class DatabaseConnection {
     private static final String URL = "jdbc:mysql://localhost:/sistema";
     private static final String USER = "root";
@@ -36,7 +46,23 @@ public class CRIA_CONTA extends javax.swing.JFrame {
      */
     public CRIA_CONTA() {
         initComponents();
+          try {
+    // Máscara para data de entrada
+    MaskFormatter maskData = new MaskFormatter("##/##/####");
+    maskData.setPlaceholderCharacter('_');
+
+    // Aplica a máscara aos dois campos
+    maskData.install( jFormattedTextField1);
+    
+} catch (ParseException ex) {
+    Logger.getLogger(CRIA_CONTA.class.getName()).log(Level.SEVERE, null, ex);
+}
     }
+    
+    
+        
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,24 +75,23 @@ public class CRIA_CONTA extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txt_nome = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        txt_data = new javax.swing.JTextField();
+        TXT_email = new javax.swing.JTextField();
         psf_senha = new javax.swing.JPasswordField();
         btn_criar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txt_data = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 190, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 190, -1));
 
-        txt_data.addActionListener(new java.awt.event.ActionListener() {
+        TXT_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dataActionPerformed(evt);
+                TXT_emailActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 200, -1));
+        jPanel1.add(TXT_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 190, -1));
         jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 190, -1));
 
         btn_criar.setText("jButton1");
@@ -77,9 +102,16 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         });
         jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, 430));
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 160, -1));
+
+        txt_data.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
+        txt_data.setText("jLabel1");
+        jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,42 +133,76 @@ public class CRIA_CONTA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_criarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_criarActionPerformed
-       String nome = txt_nome.getText();
-String email = jTextField2.getText();
-String senha = new String(psf_senha.getPassword());
-String data = txt_data.getText();
+        String nome = txt_nome.getText();
+    String email = TXT_email.getText();
+    String senha = new String(psf_senha.getPassword());
+    String data = jFormattedTextField1.getText();
 
-// Verifica se algum dos campos está vazio
-if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || data.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
-    return; // Sai do método sem tentar inserir no banco de dados
-}
+    if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || data.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-String sql = "INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?)";
+    // Validação do email
+    String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    if (!Pattern.matches(emailPattern, email)) {
+        JOptionPane.showMessageDialog(this, "Por favor, insira um email válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-try (Connection conn = DatabaseConnection.getConnection();
-     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    // Validação da data de nascimento
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    dateFormat.setLenient(false);
+    java.util.Date dateOfBirth;
+    try {
+        dateOfBirth = dateFormat.parse(data);
+    } catch (ParseException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, insira uma data de nascimento válida no formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-   pstmt.setString(1, nome); // Nome
-   pstmt.setString(2, email); // Email
-   pstmt.setString(3, data); // Data de nascimento
-   pstmt.setString(4, senha); // Senha
+    try (Connection conn = DatabaseConnection.getConnection()) {
+        // Verifica se o email já está cadastrado
+        String checkEmailSql = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
+        try (PreparedStatement checkEmailStmt = conn.prepareStatement(checkEmailSql)) {
+            checkEmailStmt.setString(1, email);
+            ResultSet rs = checkEmailStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(this, "Usuário já cadastrado com este email.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
 
-    pstmt.executeUpdate();
-    JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
-    
-    LOGIN logar = new LOGIN();
-    logar.setVisible(true);
-    this.dispose(); // Fechar a tela atual
+        // Inserir novo usuário
+        String sql = "INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nome);
+            pstmt.setString(2, email);
+            pstmt.setDate(3, new java.sql.Date(dateOfBirth.getTime()));
+            pstmt.setString(4, senha);
 
-} catch (SQLException e) {
-    JOptionPane.showMessageDialog(this, "Erro ao criar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-}
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
+
+            LOGIN logar = new LOGIN();
+            logar.setVisible(true);
+            this.dispose();
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Erro ao criar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+
+                                           
+
     }//GEN-LAST:event_btn_criarActionPerformed
 
-    private void txt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataActionPerformed
+    private void TXT_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dataActionPerformed
+    }//GEN-LAST:event_TXT_emailActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,12 +240,12 @@ try (Connection conn = DatabaseConnection.getConnection();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TXT_email;
     private javax.swing.JButton btn_criar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPasswordField psf_senha;
-    private javax.swing.JTextField txt_data;
+    private javax.swing.JLabel txt_data;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /*
@@ -79,7 +80,7 @@ public class LOGIN extends javax.swing.JFrame {
         });
         jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 130, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, 390));
 
@@ -108,9 +109,17 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_EmailActionPerformed
 
     private void btn_logarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logarActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
         String email = txt_Email.getText();
         String senha = new String(jPass_senha.getPassword());
+
+        // Expressão regular para validar email
+        String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        
+        if (!Pattern.matches(emailPattern, email)) {
+            JOptionPane.showMessageDialog(this, "Por favor, insira um email válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         String sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
 
@@ -126,18 +135,18 @@ public class LOGIN extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
                 
                 MENU menu = new MENU();
-           menu.setVisible(true);
-           this.dispose(); // Fechar a tela atual
-           
+                menu.setVisible(true);
+                this.dispose(); // Fechar a tela atual
+
                 // Redirecionar para a próxima tela ou funcionalidade
             } else {
                 JOptionPane.showMessageDialog(this, "Email ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
             }
 
-            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao realizar login: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
+   
     
     }//GEN-LAST:event_btn_logarActionPerformed
 
