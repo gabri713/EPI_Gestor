@@ -1,15 +1,15 @@
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,26 +23,76 @@ import javax.swing.table.DefaultTableModel;
 public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
    
    
- 
-   
+  private final String URL = "jdbc:mysql://localhost:/sistema";
+        private final String USER = "root";
+        private final String PASSWORD = "";
+        
+        public Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }
     /**
      * Creates new form ENTREGA_DE_EPI
      */
     public ENTRADA_epi_funcionarios() {
         initComponents();
-        
+         addDocumentListenerToNomeEpi();
     }
+
+    private void addDocumentListenerToNomeEpi() {
+          
+        nome_doEPI.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                buscarIdEpi(nome_doEPI.getText().trim());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                buscarIdEpi(nome_doEPI.getText().trim());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Não utilizado para campos de texto simples
+            }
+        });
+    }
+
+    private void buscarIdEpi(String nomeEpi) {
+        String sql = "SELECT id_epi FROM EntradaEPI WHERE nome_epi = ?";
+        int idEpi = -1;
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nomeEpi);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    idEpi = rs.getInt("id_epi");
+                    id_doEPI.setText(String.valueOf(idEpi));
+                } else {
+                    id_doEPI.setText("");
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar ID do EPI: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            id_doEPI.setText("");
+        }
+    }
+          
     public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
-    private static final String USER = "root"; 
-    private static final String PASSWORD = ""; 
+    private final String URL = "jdbc:mysql://localhost:/sistema";
+        private final String USER = "root";
+        private final String PASSWORD = "";
+        
+        public Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD); }
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
     }
 
-    
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,10 +178,10 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
                 BTN_SALVA1ActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 160, 30));
+        jPanel1.add(BTN_SALVA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 150, 40));
 
         jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 150, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 150, 40));
 
         MOSTRA_LISTA1.setText("jButton1");
         MOSTRA_LISTA1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,14 +196,14 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
                 txt_nome_funcionarioActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nome_funcionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 190, -1));
+        jPanel1.add(txt_nome_funcionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 230, -1));
 
         id_doEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_doEPIActionPerformed(evt);
             }
         });
-        jPanel1.add(id_doEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 240, -1));
+        jPanel1.add(id_doEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 240, -1));
 
         nome_doEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,25 +217,25 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
                 TXT_tipo_epiActionPerformed(evt);
             }
         });
-        jPanel1.add(TXT_tipo_epi, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 240, -1));
+        jPanel1.add(TXT_tipo_epi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 240, 30));
 
         txt_quantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_quantidadeActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 210, -1));
+        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 210, -1));
 
         txt_proteçao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_proteçaoActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_proteçao, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 402, 240, 20));
+        jPanel1.add(txt_proteçao, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 240, 30));
 
         BTN_VOLTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\EPI PRA FUNCIONARI.png")); // NOI18N
         BTN_VOLTA.setText("jLabel2");
-        jPanel1.add(BTN_VOLTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, 518));
+        jPanel1.add(BTN_VOLTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 790, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -274,40 +324,38 @@ ENTRADA_epi_funcionarios.this.dispose();
     }//GEN-LAST:event_listasActionPerformed
 
     private void BTN_SALVA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SALVA1ActionPerformed
-         if (txt_nome_funcionario.getText().trim().isEmpty() ||
-        id_doEPI.getText().trim().isEmpty() ||
-        nome_doEPI.getText().trim().isEmpty() ||
-        TXT_tipo_epi.getText().trim().isEmpty() ||
-        txt_quantidade.getText().trim().isEmpty() ||
-        txt_proteçao.getText().trim().isEmpty()) {
-        
-        JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        if (txt_nome_funcionario.getText().trim().isEmpty() ||
+            id_doEPI.getText().trim().isEmpty() ||
+            nome_doEPI.getText().trim().isEmpty() ||
+            TXT_tipo_epi.getText().trim().isEmpty() ||
+            txt_quantidade.getText().trim().isEmpty() ||
+            txt_proteçao.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    // Dados de conexão
-    String url = "jdbc:mysql://localhost:/sistema";
-    String user = "root";
-    String password = "";
+        String url = "jdbc:mysql://localhost:/sistema";
+        String user = "root";
+        String password = "";
 
-    // Método para salvar dados no banco de dados
-    String sql = "INSERT INTO  epi_para_funcionarios(nome_funcionario, id_epi, nome_epi, tipo_epi, quantidade, protecao) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO epi_para_funcionarios(nome_funcionario, id_epi, nome_epi, tipo_epi, quantidade, protecao) VALUES (?, ?, ?, ?, ?, ?)";
 
-    try (Connection conn = DriverManager.getConnection(url, user, password);
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-        pstmt.setString(1, txt_nome_funcionario.getText());
-        pstmt.setInt(2, Integer.parseInt(id_doEPI.getText()));
-        pstmt.setString(3, nome_doEPI.getText());
-        pstmt.setString(4, TXT_tipo_epi.getText());
-        pstmt.setInt(5, Integer.parseInt(txt_quantidade.getText()));
-        pstmt.setString(6, txt_proteçao.getText());
+            pstmt.setString(1, txt_nome_funcionario.getText());
+            pstmt.setInt(2, Integer.parseInt(id_doEPI.getText()));
+            pstmt.setString(3, nome_doEPI.getText());
+            pstmt.setString(4, TXT_tipo_epi.getText());
+            pstmt.setInt(5, Integer.parseInt(txt_quantidade.getText()));
+            pstmt.setString(6, txt_proteçao.getText());
 
-        pstmt.executeUpdate();
-        JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!");
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Erro ao salvar dados: " + e.getMessage());
-    }
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar dados: " + e.getMessage());
+        }
+    
     }//GEN-LAST:event_BTN_SALVA1ActionPerformed
 
     private void MOSTRA_LISTA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MOSTRA_LISTA1ActionPerformed

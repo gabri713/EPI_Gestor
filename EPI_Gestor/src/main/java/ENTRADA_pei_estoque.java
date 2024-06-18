@@ -1,5 +1,7 @@
 
-import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,54 +10,132 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.MaskFormatter;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
+
 
 /**
  *
  * @author vitor
  */
 public class ENTRADA_pei_estoque extends javax.swing.JFrame {
- private SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-    /**
-     * Creates new form ENTRADA_pei_estoque
-     */
-    public ENTRADA_pei_estoque() {
+ private HashMap<String, Integer> primeiroIdPorNomeEpi = new HashMap<>();
+
+     private final String URL = "jdbc:mysql://localhost:/sistema";
+        
+        public Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }private final String USER = "root";
+        private final String PASSWORD = "";
+        
+public ENTRADA_pei_estoque() {
         initComponents();
-        try {
-            MaskFormatter maskDataEntrada = new MaskFormatter("##/##/####");
-            maskDataEntrada.setPlaceholderCharacter('_');
-            maskDataEntrada.install(jFormatted_data_entrada);
+         
+        
+    try {
+            // Máscara para a data de entrada e validade
+            MaskFormatter maskdtentrada = new MaskFormatter("##/##/####");
+            maskdtentrada.setPlaceholderCharacter('_');
+            maskdtentrada.install((JFormattedTextField) jFormatted_data_entrada);
 
             MaskFormatter maskDataValidade = new MaskFormatter("##/##/####");
             maskDataValidade.setPlaceholderCharacter('_');
-            maskDataValidade.install(jFormatted_validade);
+            maskDataValidade.install((JFormattedTextField) jFormatted_validade);
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    
-       
-    
-    }
-    
-    
-     public class DatabaseConnection {
-    
-    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
-    private static final String USER = "root"; 
-    private static final String PASSWORD = ""; 
+        
+        // Adiciona um DocumentListener ao campo de texto do nome do EPI
+        nome_epi.getDocument().addDocumentListener(new DocumentListener() {
+            
+            public void insertUpdate(DocumentEvent e) {
+                updateEpiId();
+            }
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            public void removeUpdate(DocumentEvent e) {
+                updateEpiId();
+            }
+
+            
+            public void changedUpdate(DocumentEvent e) {
+                updateEpiId();
+            }
+
+            private void updateEpiId() {
+                String nomeEpi = nome_epi.getText();
+                if (!nomeEpi.isEmpty()) {
+                    try {
+                        Connection con = getConnection();
+                        String sqlSelect = "SELECT id_epi FROM EntradaEPI WHERE nome_epi = ? ORDER BY id_epi ASC LIMIT 1";
+                        PreparedStatement stmt = con.prepareStatement(sqlSelect);
+                        stmt.setString(1, nomeEpi);
+                        ResultSet rs = stmt.executeQuery();
+                        if (rs.next()) {
+                            int idEPI = rs.getInt("id_epi");
+                            txt_ID_EPI.setText(String.valueOf(idEPI));
+                        } else {
+                            txt_ID_EPI.setText(""); // Limpa o campo se o EPI não for encontrado
+                        }
+                        rs.close();
+                        stmt.close();
+                        con.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ENTRADA_pei_estoque.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
+}
+public static void gerarRelatorio2() {
+   try {
+        ENTRADA_pei_estoque entradaPeiEstoque = new ENTRADA_pei_estoque();
+        Connection con = entradaPeiEstoque.getConnection();
+
+        String sqlSelect = "SELECT * FROM EntradaEPI";
+        PreparedStatement stmt = con.prepareStatement(sqlSelect);
+        ResultSet rs = stmt.executeQuery();
+
+        StringBuilder relatorio = new StringBuilder();
+        relatorio.append("Relatório de Dados Estoque:\n\n");
+
+        while (rs.next()) {
+            relatorio.append("ID: ").append(rs.getInt("id_epi")).append("\n");
+            relatorio.append("Nome EPI: ").append(rs.getString("nome_epi")).append("\n");
+            relatorio.append("Tipo EPI: ").append(rs.getString("tipo_epi")).append("\n");
+            relatorio.append("Quantidade: ").append(rs.getInt("quantidade")).append("\n");
+            relatorio.append("Fornecedor: ").append(rs.getString("fornecedor")).append("\n");
+            relatorio.append("Data de Entrada: ").append(rs.getDate("dt_entrada")).append("\n");
+            relatorio.append("Data de Validade: ").append(rs.getDate("validade")).append("\n\n");
+            relatorio.append("___________________\n\n"); // Adiciona separador entre os blocos
+        }
+
+        con.close(); // Fechar a conexão com o banco de dados
+
+        // Salvar o relatório no desktop do usuário
+        String desktopPath = System.getProperty("user.home") + "/Desktop/relatorio2.txt";
+        FileWriter writer = new FileWriter(desktopPath);
+        writer.write(relatorio.toString());
+        writer.close();
+
+        JOptionPane.showMessageDialog(null, "Relatório  gerado com sucesso no desktop!");
+
+    } catch (SQLException | IOException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao gerar relatório : " + e.getMessage());
     }
-    }
+}
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +160,7 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         jFormatted_validade = new javax.swing.JFormattedTextField();
         jFormatted_data_entrada = new javax.swing.JFormattedTextField();
         salva2 = new javax.swing.JButton();
+        nome_epi = new javax.swing.JTextField();
         salvar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,14 +229,14 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
                 TXT_tipoEPIActionPerformed(evt);
             }
         });
-        jPanel1.add(TXT_tipoEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 162, 220, 30));
+        jPanel1.add(TXT_tipoEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 220, 20));
 
         txt_quantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_quantidadeActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 160, 250, -1));
+        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 240, 20));
 
         txt_ID_EPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +257,7 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
                 jFormatted_validadeActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormatted_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 230, -1));
+        jPanel1.add(jFormatted_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 230, 20));
 
         jFormatted_data_entrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,9 +274,16 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
         });
         jPanel1.add(salva2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
 
+        nome_epi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nome_epiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nome_epi, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 180, -1));
+
         salvar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\ENTRADA_FUNCIONARIO.png")); // NOI18N
         salvar.setText("jLabel1");
-        jPanel1.add(salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 510));
+        jPanel1.add(salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,15 +291,14 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -286,7 +373,7 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_listasActionPerformed
 
     private void TXT_tipoEPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_tipoEPIActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_TXT_tipoEPIActionPerformed
 
     private void txt_quantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantidadeActionPerformed
@@ -311,128 +398,101 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
 
     private void salva2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salva2ActionPerformed
     
-   String tipoEPI = TXT_tipoEPI.getText();
-    String quantidade = txt_quantidade.getText();
-    String idEPI = txt_ID_EPI.getText();
-    String fornecedor = txt_Fonercedor.getText();
+                                          
+       String nomeEpi = nome_epi.getText();
+        String tipoEPI = TXT_tipoEPI.getText();
+        String quantidade = txt_quantidade.getText();
+        String fornecedor = txt_Fonercedor.getText();
+        String idEPIString = txt_ID_EPI.getText().trim(); // Captura o ID como string
 
-    // Captura as datas formatadas
-    Date dt_entrada = null;
-    Date validade = null;
-
-    try {
-        dt_entrada = formatoData.parse(jFormatted_data_entrada.getText());
-        validade = formatoData.parse(jFormatted_validade.getText());
-    } catch (ParseException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, insira datas válidas no formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Validação: Verificar se algum campo está vazio
-    if (tipoEPI.isEmpty() || quantidade.isEmpty() || idEPI.isEmpty() || fornecedor.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Verifica se o ID do EPI é um número válido
-    try {
-        int idEpiInt = Integer.parseInt(idEPI); // Tentativa de converter para inteiro
-        if (idEpiInt <= 0) {
-            JOptionPane.showMessageDialog(this, "ID do EPI deve ser um número maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+        // Validação básica de campos vazios
+        if (nomeEpi.isEmpty() || tipoEPI.isEmpty() || quantidade.isEmpty() || fornecedor.isEmpty() || idEPIString.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-       try {
-           // Verificar se o ID do EPI já existe no banco de dados
-           if (idEPIJaCadastrado(idEpiInt)) {
-               JOptionPane.showMessageDialog(this, "ID do EPI já cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);
-               return;
-           }
-       } catch (SQLException ex) {
-           Logger.getLogger(ENTRADA_pei_estoque.class.getName()).log(Level.SEVERE, null, ex);
-       }
-
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "ID do EPI deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Verifica se a quantidade é um número válido
-    try {
-        int quantidadeInt = Integer.parseInt(quantidade); // Tentativa de converter para inteiro
-        if (quantidadeInt <= 0) {
-            JOptionPane.showMessageDialog(this, "A quantidade deve ser um número maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+        int idEPI;
+        try {
+            // Converte o ID para inteiro
+            idEPI = Integer.parseInt(idEPIString);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "O ID do EPI deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "A quantidade deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
 
-    // Verifica a validade da data
-    if (validade.before(dt_entrada)) {
-        JOptionPane.showMessageDialog(this, "A data de validade deve ser posterior à data de entrada.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        Date dt_entrada = null;
+        Date validade = null;
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
-    try {
-        Connection con = DatabaseConnection.getConnection();
-        
-        // Verifica se o ID do EPI já está cadastrado
-        if (idEPIJaCadastrado(Integer.parseInt(idEPI))) {
-            JOptionPane.showMessageDialog(this, "ID do EPI já cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+        try {
+            dt_entrada = formatoData.parse(jFormatted_data_entrada.getText());
+            validade = formatoData.parse(jFormatted_validade.getText());
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, insira datas válidas no formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            int quantidadeInt = Integer.parseInt(quantidade);
+            if (quantidadeInt <= 0) {
+                JOptionPane.showMessageDialog(this, "A quantidade deve ser um número maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "A quantidade deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (validade.before(dt_entrada)) {
+            JOptionPane.showMessageDialog(this, "A data de validade deve ser posterior à data de entrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Insere o novo EPI
+            Connection con = getConnection();
+
+            String sqlInsert = "INSERT INTO EntradaEPI (id_epi, nome_epi, validade, tipo_epi, quantidade, fornecedor, dt_entrada) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(sqlInsert);
+            stmt.setInt(1, idEPI);
+            stmt.setString(2, nomeEpi);
+            stmt.setDate(3, new java.sql.Date(validade.getTime()));
+            stmt.setString(4, tipoEPI);
+            stmt.setInt(5, Integer.parseInt(quantidade));
+            stmt.setString(6, fornecedor);
+            stmt.setDate(7, new java.sql.Date(dt_entrada.getTime()));
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "EPI cadastrado com sucesso.");
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao cadastrar EPI.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
             con.close();
-            return;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
-        String sql = "INSERT INTO EntradaEPI (id_epi, validade, tipo_epi, quantidade, fornecedor, dt_entrada) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = con.prepareStatement(sql);
-
-        // Define os parâmetros do PreparedStatement
-        stmt.setInt(1, Integer.parseInt(idEPI)); // id_epi
-        stmt.setDate(2, new java.sql.Date(validade.getTime())); // validade
-        stmt.setString(3, tipoEPI); // tipo_epi
-        stmt.setInt(4, Integer.parseInt(quantidade)); // quantidade
-        stmt.setString(5, fornecedor); // fornecedor
-        stmt.setDate(6, new java.sql.Date(dt_entrada.getTime())); // dt_entrada
-
-        // Executa o comando SQL
-        int rowsAffected = stmt.executeUpdate();
-
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(this, "EPI cadastrado com sucesso.");
-            limparCampos(); // Limpa os campos somente após o cadastro ser bem-sucedido
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao cadastrar EPI.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-
-        con.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Erro ao conectar ao banco de dados: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
-}
 
-private boolean idEPIJaCadastrado(int idEPI) throws SQLException {
-    Connection con = DatabaseConnection.getConnection();
-    String sql = "SELECT id_epi FROM EntradaEPI WHERE id_epi = ?";
-    PreparedStatement stmt = con.prepareStatement(sql);
-    stmt.setInt(1, idEPI);
-    ResultSet rs = stmt.executeQuery();
-    boolean cadastrado = rs.next(); // Se existir algum resultado, já está cadastrado
-    con.close();
-    return cadastrado;
-}
-
-private void limparCampos() {
-    TXT_tipoEPI.setText("");
-    txt_quantidade.setText("");
-    txt_ID_EPI.setText("");
-    txt_Fonercedor.setText("");
-    jFormatted_data_entrada.setValue(null);
-    jFormatted_validade.setValue(null);
-
+    private void limparCampos() {
+        TXT_tipoEPI.setText("");
+        txt_quantidade.setText("");
+        txt_ID_EPI.setText("");
+        txt_Fonercedor.setText("");
+        jFormatted_data_entrada.setValue(null);
+        jFormatted_validade.setValue(null);
     
+
     }//GEN-LAST:event_salva2ActionPerformed
+
+
+
+    private void nome_epiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome_epiActionPerformed
+        // TODO add
+    }//GEN-LAST:event_nome_epiActionPerformed
 
     
     
@@ -482,6 +542,7 @@ private void limparCampos() {
     private javax.swing.JFormattedTextField jFormatted_validade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listas;
+    private javax.swing.JTextField nome_epi;
     private javax.swing.JButton salva2;
     private javax.swing.JLabel salvar;
     private javax.swing.JTextField txt_Fonercedor;

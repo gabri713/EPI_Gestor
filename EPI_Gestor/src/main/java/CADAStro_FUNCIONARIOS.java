@@ -20,14 +20,17 @@ import javax.swing.text.MaskFormatter;
  */
 public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
  public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:/sistema"; 
-    private static final String USER = "root"; 
-    private static final String PASSWORD = ""; 
+    private final String URL = "jdbc:mysql://localhost:/sistema";
+        private final String USER = "root";
+        private final String PASSWORD = "";
+        
+        public Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }
+    }
+  
+    // Outros métodos e lógica aqui
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
-    }
     /**
      * Creates new form CADAStro_FUNCIONARIOS
      */
@@ -175,6 +178,12 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 120, 20));
+
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 120, 20));
 
         btn_mostra_lista.setText("jButton1");
@@ -408,6 +417,10 @@ CADAStro_FUNCIONARIOS.this.dispose();
     private void dt_nascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dt_nascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dt_nascimentoActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
 
    
     /**

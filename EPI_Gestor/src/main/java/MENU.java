@@ -105,7 +105,7 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\MENU.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\MENU.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 490));
 
@@ -162,24 +162,28 @@ public class MENU extends javax.swing.JFrame {
 
     private void cb_relatoriosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cb_relatoriosAncestorAdded
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cb_relatoriosAncestorAdded
 
     private void listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listasActionPerformed
         // TODO add your handling code here:
         String selectedOption = (String)listas.getSelectedItem();
 
-        if ("EPI em Estoque".equals(selectedOption)) {
-            MENU.this.dispose();
-            LISTA_EPI_EMESTOQUE listaEstoque = new LISTA_EPI_EMESTOQUE();
-            listaEstoque.setVisible(true);
-        } else if ("Funcionarios  Cadastrados".equals(selectedOption)) {
-            MENU.this.dispose();
-            LISTA_FUNCIONARIOS lisEpiEntrgue = new LISTA_FUNCIONARIOS();
-            lisEpiEntrgue.setVisible(true);
-            } else if ("EPI Entregue".equals(selectedOption)) {
-            MENU.this.dispose();
-            EPI_ENTREGUE lisEpiEntrgue = new EPI_ENTREGUE();
-            lisEpiEntrgue.setVisible(true);
+         if ("EPI em Estoque".equals(selectedOption)) {
+        MENU.this.dispose();
+        LISTA_EPI_EMESTOQUE listaEstoque = new LISTA_EPI_EMESTOQUE();
+        listaEstoque.carregarDadosEPIEstoque(); // Carrega os dados de EPI em estoque
+        listaEstoque.setVisible(true);
+    } else if ("Funcionarios  Cadastrados".equals(selectedOption)) {
+        MENU.this.dispose();
+        LISTA_FUNCIONARIOS listaFuncionarios = new LISTA_FUNCIONARIOS();
+        listaFuncionarios.carregarDadosFuncionarios(); // Carrega os dados dos funcionários cadastrados
+        listaFuncionarios.setVisible(true);
+    } else if ("EPI Entregue".equals(selectedOption)) {
+        MENU.this.dispose();
+        EPI_ENTREGUE listaEPIEntregue = new EPI_ENTREGUE();
+        listaEPIEntregue.carregarDadosEPIEntregue(); // Carrega os dados de EPI entregue
+        listaEPIEntregue.setVisible(true);
     }//GEN-LAST:event_listasActionPerformed
     }
     /**

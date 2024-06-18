@@ -22,15 +22,15 @@ import javax.swing.JOptionPane;
  */
 public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
-    public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:/O_sistema"; 
-    private static final String USER = "root"; 
-    private static final String PASSWORD = ""; 
+    private final String URL = "jdbc:mysql://localhost:/sistema";
+        private final String USER = "root";
+        private final String PASSWORD = "";
+        
+        public Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }
+    
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
-    }
     
     /**
      * Creates new form REDEFINIR_SENHA

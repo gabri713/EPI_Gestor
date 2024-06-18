@@ -1,3 +1,21 @@
+
+import java.awt.Desktop;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,7 +32,123 @@ public class RELATORIO_ESTOQUE extends javax.swing.JFrame {
      */
     public RELATORIO_ESTOQUE() {
         initComponents();
+        carregarDadosDoArquivo();
     }
+   private void carregarDadosDoArquivo() {
+        // Caminho da pasta da área de trabalho do usuário
+        String desktopPath = System.getProperty("user.home") + "\\Desktop\\";
+        
+        // Procurar por arquivos .txt na área de trabalho
+        File desktopFolder = new File(desktopPath);
+        File[] files = desktopFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".txt"));
+
+        if (files != null && files.length > 0) {
+            // Escolher o primeiro arquivo .txt encontrado (poderia ser mais elaborado para escolher o arquivo certo)
+            File arquivoTxt = files[0];
+
+            // Modelo da tabela
+            DefaultTableModel model = new DefaultTableModel(
+                new Object [][] {},
+                new String [] {
+                    "ID", "Nome EPI", "Tipo EPI", "Quantidade", "Fornecedor", "Data de Entrada", "Data de Validade", "Caminho do Arquivo"
+                }
+            ) {
+                // Desabilitar edição de células da tabela
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            
+            // Aplicar o modelo à tabela
+            tabelaE.setModel(model);
+
+            // Limpar dados existentes da tabela (se houver)
+            model.setRowCount(0);
+
+            // Ler o arquivo e preencher a tabela
+            try (BufferedReader br = new BufferedReader(new FileReader(arquivoTxt))) {
+                String line;
+                Object[] rowData = new Object[8]; // Vetor para armazenar os dados de cada linha
+
+                while ((line = br.readLine()) != null) {
+                    // Supondo que cada linha do arquivo tenha um formato específico
+                    String[] data = line.split(": "); // Dividir a linha pelo separador ": "
+                    
+                    // Verificar o campo e preencher o vetor de dados correspondente
+                    switch (data[0]) {
+                        case "ID":
+                            rowData[0] = data[1];
+                            break;
+                        case "Nome EPI":
+                            rowData[1] = data[1];
+                            break;
+                        case "Tipo EPI":
+                            rowData[2] = data[1];
+                            break;
+                        case "Quantidade":
+                            rowData[3] = data[1];
+                            break;
+                        case "Fornecedor":
+                            rowData[4] = data[1];
+                            break;
+                        case "Data de Entrada":
+                            rowData[5] = data[1];
+                            break;
+                        case "Data de Validade":
+                            rowData[6] = data[1];
+                            break;
+                        default:
+                            // Ignorar campos desconhecidos ou não relevantes
+                            break;
+                    }
+                }
+                
+                // Adicionar o caminho do arquivo na última coluna da tabela
+                rowData[7] = arquivoTxt.getAbsolutePath();
+                
+                // Adicionar a linha na tabela após processar todas as colunas
+                model.addRow(rowData);
+                
+                // Configurar o listener para abrir o arquivo quando clicar na célula correspondente
+                tabelaE.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        if (e.getClickCount() == 2) { // Verificar se é um clique duplo
+                            int row = tabelaE.getSelectedRow();
+                            int column = tabelaE.getSelectedColumn();
+
+                            // Verificar se o clique foi na coluna correta (última coluna da tabela)
+                            if (column == 7) { // Índice da última coluna (começa em 0)
+                                try {
+                                    String filePath = (String) tabelaE.getValueAt(row, column);
+                                    File file = new File(filePath);
+                                    if (file.exists()) {
+                                        Desktop.getDesktop().open(file);
+                                    } else {
+                                        JOptionPane.showMessageDialog(RELATORIO_ESTOQUE.this, "Arquivo não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(RELATORIO_ESTOQUE.class.getName()).log(Level.SEVERE, null, ex);
+                                    JOptionPane.showMessageDialog(RELATORIO_ESTOQUE.this, "Erro ao abrir o arquivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                        }
+                    }
+                });
+                
+            } catch (IOException ex) {
+                Logger.getLogger(RELATORIO_ESTOQUE.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao ler o arquivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum arquivo .txt encontrado na área de trabalho.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -25,48 +159,69 @@ public class RELATORIO_ESTOQUE extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaE = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 988, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 833, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/RELATORIO ESTOQUE EPIS.png"))); // NOI18N
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 13, -1, 50));
+
+        tabelaE.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome do EPI", "Tipo do EPI", "Quantidade", "Fornecedor", "Data de Entrada", "Data de Validade", "Title 8"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelaE);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 710, 340));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\relatorio de estoque.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 59, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,7 +259,11 @@ public class RELATORIO_ESTOQUE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaE;
     // End of variables declaration//GEN-END:variables
+
 }

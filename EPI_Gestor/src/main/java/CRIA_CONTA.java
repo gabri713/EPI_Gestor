@@ -27,20 +27,14 @@ import javax.swing.text.MaskFormatter;
  * @author vcasotti
  */
 public class CRIA_CONTA extends javax.swing.JFrame {  
-    public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:/sistema";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
-    public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+    private final String URL = "jdbc:mysql://localhost:/sistema";
+        private final String USER = "root";
+        private final String PASSWORD = "";
+        
+        public Connection getConnection() throws SQLException {
             return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("Driver JDBC não encontrado", e);
         }
-    }
-}
+    
     /**
      * Creates new form CRIA_CONTA
      */
@@ -161,7 +155,7 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         return;
     }
 
-    try (Connection conn = DatabaseConnection.getConnection()) {
+    try (Connection conn = getConnection()) {
         // Verifica se o email já está cadastrado
         String checkEmailSql = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
         try (PreparedStatement checkEmailStmt = conn.prepareStatement(checkEmailSql)) {

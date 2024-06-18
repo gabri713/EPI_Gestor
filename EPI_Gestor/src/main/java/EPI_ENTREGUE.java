@@ -1,12 +1,20 @@
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class EPI_ENTREGUE extends javax.swing.JFrame {
     
      private static class DatabaseConnection {
-        private static final String URL = "jdbc:mysql://localhost:3306/sistema";
+        private static final String URL = "jdbc:mysql://localhost:/sistema";
         private static final String USER = "root";
         private static final String PASSWORD = "";
 
@@ -34,7 +42,7 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
      */
     public EPI_ENTREGUE() {
          initComponents();
-         
+          adicionarPesquisaListener();
     }
 
      public void preencherTabela3() {
@@ -78,7 +86,103 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
         }
     }
      
+     private void adicionarPesquisaListener() {
+        txt_pesquisa3.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filtrarTabela();
+            }
 
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filtrarTabela();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                filtrarTabela();
+            }
+        });
+    }
+
+    private void filtrarTabela() {
+        DefaultTableModel model = (DefaultTableModel) tb_epiENtregue.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tb_epiENtregue.setRowSorter(sorter);
+
+        String textoPesquisa = txt_pesquisa3.getText().toLowerCase();
+        if (textoPesquisa.trim().length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + textoPesquisa));
+        }
+    }
+
+    public static void gerarRelatorio2() {
+     try {
+            ENTRADA_epi_funcionarios lsf = new ENTRADA_epi_funcionarios();
+            Connection con = lsf.getConnection();
+
+            String sqlSelect = "SELECT * FROM epi_para_funcionarios";
+            PreparedStatement stmt = con.prepareStatement(sqlSelect);
+            ResultSet rs = stmt.executeQuery();
+
+            StringBuilder relatorio = new StringBuilder();
+            relatorio.append("Relatório de Dados de saída de EPIs para funcionários:\n\n");
+
+            // Adicionar a data e hora de geração do relatório
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            String formattedNow = now.format(formatter);
+            relatorio.append("Data e Hora de Geração: ").append(formattedNow).append("\n\n");
+
+            int totalEPIs = 0;
+
+            while (rs.next()) {
+                relatorio.append("Nome Funcionário: ").append(rs.getString("nome_funcionario")).append("\n");
+                relatorio.append("ID: ").append(rs.getInt("id_epi")).append("\n");
+                relatorio.append("Nome EPI: ").append(rs.getString("nome_epi")).append("\n");
+                relatorio.append("Tipo EPI: ").append(rs.getString("tipo_epi")).append("\n");
+                relatorio.append("Quantidade: ").append(rs.getInt("quantidade")).append("\n");
+                relatorio.append("Proteção: ").append(rs.getString("protecao")).append("\n");
+                relatorio.append("___________________\n\n");
+
+                totalEPIs += rs.getInt("quantidade");
+            }
+
+            con.close();
+
+            relatorio.append("Total de EPIs cadastrados: ").append(totalEPIs).append("\n");
+
+            String desktopPath = System.getProperty("user.home") + "/Desktop/relatorio EPI entregue aos funcionarios.txt";
+            FileWriter writer = new FileWriter(desktopPath);
+            writer.write(relatorio.toString());
+            writer.close();
+
+            JOptionPane.showMessageDialog(null, "Relatório gerado com sucesso no desktop!");
+
+        } catch (SQLException | IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e.getMessage());
+        }
+    }
+
+    public void carregarDadosEPIEntregue() {
+        DefaultTableModel model = (DefaultTableModel) tb_epiENtregue.getModel();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/sistema", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM epi_para_funcionarios");
+
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getInt("id"), rs.getString("nome_funcionario"), rs.getString("nome_epi"), rs.getInt("quantidade")});
+            }
+
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,11 +198,18 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
         VOLTA_INICIO = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_epiENtregue = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        txt_pesquisa3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        gerar_relatorio = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,11 +234,26 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_epiENtregue);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 730, 270));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 750, 270));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 802, 480));
+        txt_pesquisa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_pesquisa3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_pesquisa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 122, 510, 30));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
+
+        gerar_relatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
+        gerar_relatorio.setText("jLabel1");
+        jPanel2.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 802, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,6 +280,19 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
          VOLTA_INICIO.setVisible(true);        // TODO add your handling code here:
 
     }//GEN-LAST:event_VOLTA_INICIOActionPerformed
+
+    private void txt_pesquisa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pesquisa3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_pesquisa3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        gerarRelatorio2();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentHidden
 
     /**
      * @param args the command line arguments
@@ -192,10 +331,12 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VOLTA_INICIO;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel gerar_relatorio;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb_epiENtregue;
+    private javax.swing.JTextField txt_pesquisa3;
     // End of variables declaration//GEN-END:variables
 }
