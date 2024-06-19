@@ -76,7 +76,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="170" width="750" height="270"/>
+              <AbsoluteConstraints x="50" y="170" width="750" height="270"/>
             </Constraint>
           </Constraints>
 
@@ -149,7 +149,7 @@
         <Component class="javax.swing.JLabel" name="gerar_relatorio">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\vitor\Desktop\EPI_gestor\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\epi_ENTRGUE FUNCIONARIO.png"/>
+              <Image iconType="2" name="D:\Users\vcasotti\Desktop\Nova pasta\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\epi_ENTRGUE FUNCIONARIO.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

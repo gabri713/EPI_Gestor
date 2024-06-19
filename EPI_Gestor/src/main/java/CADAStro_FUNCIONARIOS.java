@@ -101,7 +101,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 cb_estoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 60));
+        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 100, 60));
 
         cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
         cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -118,7 +118,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 cb_relatoriosActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 70));
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, 70));
 
         VOLTA_INICIO.setText("jButton1");
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 listasActionPerformed(evt);
             }
         });
-        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 80, 70));
+        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 90, 70));
 
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +218,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         jPanel1.add(dt_nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 450, -1));
         jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, -1));
 
-        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
         BTN_MOTRA_LISTA.setText("jLabel1");
         jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
 
@@ -283,9 +283,11 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_relatoriosActionPerformed
 
     private void VOLTA_INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTA_INICIOActionPerformed
-CADAStro_FUNCIONARIOS.this.dispose();
+
+        CADAStro_FUNCIONARIOS.this.dispose();
         MENU  VOLTA_INICIO = new MENU();
          VOLTA_INICIO.setVisible(true);
+         
     }//GEN-LAST:event_VOLTA_INICIOActionPerformed
 
     private void listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listasActionPerformed

@@ -106,7 +106,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="220" y="470" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="210" y="470" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -116,14 +116,14 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="580" y="470" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="530" y="460" width="150" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\vitor\Desktop\EPI_gestor\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\relatorio entrega F.png"/>
+                  <Image iconType="2" name="D:\Users\vcasotti\Desktop\Nova pasta\EPI_Gestor\EPI_Gestor\src\main\java\com\telas\epi_gestor\telas\relatorio entrega F.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
               </Properties>

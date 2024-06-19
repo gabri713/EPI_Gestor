@@ -1,3 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.SwingConstants;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +18,114 @@
  * @author vcasotti
  */
 public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VISAO_GERAL_ESTOQUE
-     */
+ 
+   
+    private final String URL = "jdbc:mysql://localhost:/sistema";
+        private final String USER = "root";
+        private final String PASSWORD = "";
+        
+        public Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+}
+    
+    
+    
+    
     public VISAO_GERAL_ESTOQUE() {
         initComponents();
+        carregarTotalEPIs();
+        carregarEPIsVencendoEsteMes();
+    }
+    
+   private void carregarTotalEPIs() {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
+    try {
+        conn = getConnection();
+
+        String sql = "SELECT COUNT(*) AS total_epi FROM EntradaEPI";
+        stmt = conn.prepareStatement(sql);
+        rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            int totalEPIs = rs.getInt("total_epi");
+            txt_total_estoque.setText(String.valueOf(totalEPIs));
+
+            // Centralizar o texto no JTextField
+            txt_total_estoque.setHorizontalAlignment(SwingConstants.CENTER);
+
+            // Desabilita a edição e torna não focável
+            txt_total_estoque.setEditable(false);
+            txt_total_estoque.setFocusable(false);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+   private void carregarEPIsVencendoEsteMes() {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = getConnection();
+
+            LocalDate now = LocalDate.now();
+            LocalDate startOfMonth = now.withDayOfMonth(1);
+            LocalDate endOfMonth = now.withDayOfMonth(now.lengthOfMonth());
+
+            // Consulta SQL para verificar EPIs vencendo este mês
+            String sql = "SELECT COUNT(*) AS vencendo_este_mes FROM EntradaEPI WHERE validade BETWEEN ? AND ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setDate(1, java.sql.Date.valueOf(startOfMonth));
+            stmt.setDate(2, java.sql.Date.valueOf(endOfMonth));
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int totalVencendoEsteMes = rs.getInt("vencendo_este_mes");
+                txt_vencendo.setText(String.valueOf(totalVencendoEsteMes));
+
+                // Centralizar o texto no JTextField
+                txt_vencendo.setHorizontalAlignment(SwingConstants.CENTER);
+
+                // Desabilitar a edição e tornar não focável
+                txt_vencendo.setEditable(false);
+                txt_vencendo.setFocusable(false);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -30,6 +142,9 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         cb_estoque = new javax.swing.JComboBox<>();
         cb_relatorios = new javax.swing.JComboBox<>();
         listas = new javax.swing.JComboBox<>();
+        txt_total_estoque = new javax.swing.JTextField();
+        txt__vence_esse_mes = new javax.swing.JTextField();
+        txt_vencendo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,9 +199,24 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL.png")); // NOI18N
+        txt_total_estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_total_estoqueActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_total_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 220, 30));
+        getContentPane().add(txt__vence_esse_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 210, 30));
+
+        txt_vencendo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vencendoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_vencendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 230, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 502));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 502));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,6 +288,14 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listasActionPerformed
 
+    private void txt_vencendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vencendoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vencendoActionPerformed
+
+    private void txt_total_estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_total_estoqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_total_estoqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,5 +338,8 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_relatorios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> listas;
+    private javax.swing.JTextField txt__vence_esse_mes;
+    private javax.swing.JTextField txt_total_estoque;
+    private javax.swing.JTextField txt_vencendo;
     // End of variables declaration//GEN-END:variables
 }

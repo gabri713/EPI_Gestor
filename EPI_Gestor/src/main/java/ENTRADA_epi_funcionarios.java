@@ -36,8 +36,12 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
     public ENTRADA_epi_funcionarios() {
         initComponents();
          addDocumentListenerToNomeEpi();
+         // Inicialmente, todos os botões e campos de texto são tornados invisíveis
+       
     }
 
+    
+    
     private void addDocumentListenerToNomeEpi() {
           
         nome_doEPI.getDocument().addDocumentListener(new DocumentListener() {
@@ -233,7 +237,7 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
         });
         jPanel1.add(txt_proteçao, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 240, 30));
 
-        BTN_VOLTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\EPI PRA FUNCIONARI.png")); // NOI18N
+        BTN_VOLTA.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\EPI PRA FUNCIONARI.png")); // NOI18N
         BTN_VOLTA.setText("jLabel2");
         jPanel1.add(BTN_VOLTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 790, 520));
 

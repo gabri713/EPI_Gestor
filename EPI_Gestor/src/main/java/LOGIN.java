@@ -55,6 +55,12 @@ public class LOGIN extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPass_senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPass_senhaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 220, 30));
 
         txt_Email.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +86,7 @@ public class LOGIN extends javax.swing.JFrame {
         });
         jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 130, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, 390));
 
@@ -157,6 +163,10 @@ public class LOGIN extends javax.swing.JFrame {
         REDEFINIR_SENHA btn_esqueci_senha = new REDEFINIR_SENHA();
         btn_esqueci_senha.setVisible(true);
     }//GEN-LAST:event_btn_esqueci_senhaActionPerformed
+
+    private void jPass_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPass_senhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPass_senhaActionPerformed
 
     /**
      * @param args the command line arguments
