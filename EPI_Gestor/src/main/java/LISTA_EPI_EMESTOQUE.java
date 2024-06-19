@@ -233,7 +233,7 @@ public void carregarDadosEPIEstoque() {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 700, 270));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 700, 270));
 
         txt_pesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +250,7 @@ public void carregarDadosEPIEstoque() {
         });
         jPanel1.add(gerar_relatorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 140, 30));
 
-        lista_pesquisa.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_EPIS.png")); // NOI18N
+        lista_pesquisa.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_EPIS.png")); // NOI18N
         lista_pesquisa.setText("jLabel1");
         jPanel1.add(lista_pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 760, 509));
 

@@ -204,19 +204,19 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
                 txt_total_estoqueActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_total_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 220, 30));
-        getContentPane().add(txt__vence_esse_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 210, 30));
+        getContentPane().add(txt_total_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 210, 30));
+        getContentPane().add(txt__vence_esse_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 210, 30));
 
         txt_vencendo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vencendoActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_vencendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 230, 30));
+        getContentPane().add(txt_vencendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 230, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 502));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 820, 502));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

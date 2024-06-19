@@ -50,6 +50,12 @@
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>4.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>co.lors</groupId>
+            <artifactId>colors</artifactId>
+            <version>0.2</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <!-- Configuração do build -->

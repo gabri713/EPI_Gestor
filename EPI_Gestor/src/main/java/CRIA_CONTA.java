@@ -103,7 +103,7 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         });
         jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 180, -1));
 
-        txt_data.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
+        txt_data.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
         txt_data.setText("jLabel1");
         jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, 430));
 

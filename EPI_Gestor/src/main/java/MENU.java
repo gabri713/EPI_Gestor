@@ -14,6 +14,8 @@ public class MENU extends javax.swing.JFrame {
      */
     public MENU() {
         initComponents();
+                                                 
+
     }
 
     /**
@@ -51,13 +53,15 @@ public class MENU extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
-        VOLTA_INICIO.setText("jButton1");
+        VOLTA_INICIO.setForeground(new java.awt.Color(255, 255, 255));
+        VOLTA_INICIO.setBorder(null);
+        VOLTA_INICIO.setBorderPainted(false);
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        getContentPane().add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
+        getContentPane().add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 60));
 
         btn_MN_cadastro_F.setText("jButton2");
         btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +109,7 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\MENU.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\MENU.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 490));
 

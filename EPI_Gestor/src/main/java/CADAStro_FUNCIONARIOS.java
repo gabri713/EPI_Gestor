@@ -36,7 +36,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
      */
     public CADAStro_FUNCIONARIOS() {
         initComponents();
-
+ VOLTA_INICIO.setBackground (new java.awt.Color(0,0,0,0)); 
  try {
             // Máscara para CPF
             MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
@@ -120,13 +120,12 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, 70));
 
-        VOLTA_INICIO.setText("jButton1");
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
+        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 60));
 
         listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
         listas.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +178,9 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 120, 20));
 
+        jTextField10.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField10.setActionCommand(null);
+        jTextField10.setBorder(null);
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
@@ -192,7 +194,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 btn_mostra_listaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 170, 30));
+        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 170, 30));
 
         BTN_SALVAR.setText("jButton2");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +202,7 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 BTN_SALVARActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 150, 30));
+        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 150, 30));
 
         btn_cancelar.setText("jButton2");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -216,9 +218,9 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
             }
         });
         jPanel1.add(dt_nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 450, -1));
-        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, -1));
+        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 120, -1));
 
-        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
         BTN_MOTRA_LISTA.setText("jLabel1");
         jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
 
