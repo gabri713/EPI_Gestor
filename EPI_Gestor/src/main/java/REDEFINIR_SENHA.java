@@ -77,7 +77,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
                 EMAILActionPerformed(evt);
             }
         });
-        getContentPane().add(EMAIL, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 200, -1));
+        getContentPane().add(EMAIL, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 200, -1));
 
         ENVIAR.setText("jButton1");
         ENVIAR.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +85,11 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
                 ENVIARActionPerformed(evt);
             }
         });
-        getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 120, 30));
+        getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 120, 30));
 
-        enviar_email.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\REDEFINIR_SENHA.png")); // NOI18N
+        enviar_email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TELA_redefinir senha.png"))); // NOI18N
         enviar_email.setText("jLabel1");
-        getContentPane().add(enviar_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 810, 524));
+        getContentPane().add(enviar_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 524));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -37,7 +37,20 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
         initComponents();
          addDocumentListenerToNomeEpi();
          // Inicialmente, todos os botões e campos de texto são tornados invisíveis
-       
+txt_nome_funcionario.setBackground (new java.awt.Color(0,0,0,1));
+id_doEPI.setBackground (new java.awt.Color(0,0,0,1));
+nome_doEPI.setBackground (new java.awt.Color(0,0,0,1));
+TXT_tipo_epi.setBackground (new java.awt.Color(0,0,0,1));
+txt_quantidade.setBackground (new java.awt.Color(0,0,0,1));
+txt_proteçao.setBackground (new java.awt.Color(0,0,0,1));
+VOLTA_INICIO.setBackground (new java.awt.Color(0,0,0,0));
+btn_MN_cadastro_F.setBackground (new java.awt.Color(0,0,0,0));
+BTN_SALVA1.setBackground (new java.awt.Color(0,0,0,0));
+MOSTRA_LISTA1.setBackground (new java.awt.Color(0,0,0,0));
+jButton2.setBackground (new java.awt.Color(0,0,0,0));
+cb_estoque.setBackground (new java.awt.Color(0,0,0,0));
+cb_relatorios.setBackground (new java.awt.Color(0,0,0,0));
+listas.setBackground (new java.awt.Color(0,0,0,0));
     }
 
     
@@ -127,31 +140,29 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        VOLTA_INICIO.setText("jButton1");
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 40));
+        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 60));
 
-        btn_MN_cadastro_F.setText("jButton2");
         btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_MN_cadastro_FActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, 50));
+        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 90, 90, 80));
 
-        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
+        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
         cb_estoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_estoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 60));
+        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 180, -1, 90));
 
-        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
+        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Relatorio do Estoque", "Relatorio de  Entrega" }));
         cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 cb_relatoriosAncestorAdded(evt);
@@ -166,78 +177,91 @@ public class ENTRADA_epi_funcionarios extends javax.swing.JFrame {
                 cb_relatoriosActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, 70));
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 290, -1, 90));
 
-        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
+        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
         listas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listasActionPerformed(evt);
             }
         });
-        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 150, 50));
+        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 400, 150, 90));
 
         BTN_SALVA1.setText("jButton1");
+        BTN_SALVA1.setBorder(null);
         BTN_SALVA1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_SALVA1ActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 150, 40));
+        jPanel1.add(BTN_SALVA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 150, 40));
 
         jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 150, 40));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 150, 40));
 
         MOSTRA_LISTA1.setText("jButton1");
+        MOSTRA_LISTA1.setBorder(null);
         MOSTRA_LISTA1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MOSTRA_LISTA1ActionPerformed(evt);
             }
         });
-        jPanel1.add(MOSTRA_LISTA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 90, 30));
+        jPanel1.add(MOSTRA_LISTA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 120, 40));
 
+        txt_nome_funcionario.setBorder(null);
         txt_nome_funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nome_funcionarioActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nome_funcionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 230, -1));
+        jPanel1.add(txt_nome_funcionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 230, 20));
 
+        id_doEPI.setBorder(null);
         id_doEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_doEPIActionPerformed(evt);
             }
         });
-        jPanel1.add(id_doEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 240, -1));
+        jPanel1.add(id_doEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 240, 30));
 
+        nome_doEPI.setBorder(null);
         nome_doEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nome_doEPIActionPerformed(evt);
             }
         });
-        jPanel1.add(nome_doEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, 30));
+        jPanel1.add(nome_doEPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 220, 20));
 
+        TXT_tipo_epi.setBorder(null);
         TXT_tipo_epi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_tipo_epiActionPerformed(evt);
             }
         });
-        jPanel1.add(TXT_tipo_epi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 240, 30));
+        jPanel1.add(TXT_tipo_epi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 268, 240, -1));
 
+        txt_quantidade.setBorder(null);
         txt_quantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_quantidadeActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 210, -1));
+        jPanel1.add(txt_quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 392, 230, 20));
 
+        txt_proteçao.setBorder(null);
         txt_proteçao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_proteçaoActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_proteçao, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 240, 30));
+        jPanel1.add(txt_proteçao, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 240, 20));
 
-        BTN_VOLTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\EPI PRA FUNCIONARI.png")); // NOI18N
+        BTN_VOLTA.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_EPIS para os funcionarios.png")); // NOI18N
         BTN_VOLTA.setText("jLabel2");
         jPanel1.add(BTN_VOLTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 790, 520));
 
@@ -392,6 +416,10 @@ ENTRADA_epi_funcionarios.this.dispose();
     private void txt_proteçaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_proteçaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_proteçaoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -40,6 +40,12 @@ public class CRIA_CONTA extends javax.swing.JFrame {
      */
     public CRIA_CONTA() {
         initComponents();
+txt_nome.setBackground (new java.awt.Color(0,0,0,1));
+TXT_email.setBackground (new java.awt.Color(0,0,0,1));
+jFormattedTextField1.setBackground (new java.awt.Color(0,0,0,1));
+psf_senha.setBackground (new java.awt.Color(0,0,0,1));
+btn_criar.setBackground (new java.awt.Color(0,0,0,0));
+jButton1.setBackground (new java.awt.Color(0,0,0,0));
           try {
     // Máscara para data de entrada
     MaskFormatter maskData = new MaskFormatter("##/##/####");
@@ -73,37 +79,46 @@ public class CRIA_CONTA extends javax.swing.JFrame {
         psf_senha = new javax.swing.JPasswordField();
         btn_criar = new javax.swing.JButton();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         txt_data = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 190, -1));
 
+        txt_nome.setBorder(null);
+        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 132, 190, 30));
+
+        TXT_email.setBorder(null);
         TXT_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_emailActionPerformed(evt);
             }
         });
-        jPanel1.add(TXT_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 190, -1));
-        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 190, -1));
+        jPanel1.add(TXT_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 190, 20));
 
-        btn_criar.setText("jButton1");
+        psf_senha.setBorder(null);
+        jPanel1.add(psf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 190, 20));
+
         btn_criar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_criarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 100, 20));
 
+        jFormattedTextField1.setBorder(null);
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 180, -1));
+        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 190, 20));
 
-        txt_data.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CRIA_CONTA.png")); // NOI18N
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 100, -1));
+
+        txt_data.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_cria conta.png")); // NOI18N
         txt_data.setText("jLabel1");
         jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, 430));
 
@@ -236,6 +251,7 @@ public class CRIA_CONTA extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TXT_email;
     private javax.swing.JButton btn_criar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField psf_senha;

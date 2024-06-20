@@ -184,7 +184,7 @@ public void carregarDadosFuncionarios() {
         });
         jScrollPane2.setViewportView(tb_listaF);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 760, 270));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 760, 270));
 
         BTN_SALVAR.setText("jButton1");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public void carregarDadosFuncionarios() {
                 BTN_SALVARActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 100, 30));
+        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 160, 30));
 
         gerar_relatorio.setText("jButton2");
         gerar_relatorio.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +200,7 @@ public void carregarDadosFuncionarios() {
                 gerar_relatorioActionPerformed(evt);
             }
         });
-        jPanel1.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 140, 30));
+        jPanel1.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 150, 30));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -208,10 +208,10 @@ public void carregarDadosFuncionarios() {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 150, 30));
-        jPanel1.add(TXT_pesquisa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 510, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 150, 40));
+        jPanel1.add(TXT_pesquisa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 510, 30));
 
-        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
+        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA FUNCIONARIOS CADASTRADOS.png"))); // NOI18N
         BTN_CANCELAR.setText("jLabel1");
         BTN_CANCELAR.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {

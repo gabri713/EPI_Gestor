@@ -30,11 +30,11 @@ public class MENU extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         VOLTA_INICIO = new javax.swing.JButton();
         btn_MN_cadastro_F = new javax.swing.JButton();
-        cb_estoque = new javax.swing.JComboBox<>();
-        cb_relatorios = new javax.swing.JComboBox<>();
-        listas = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        cb_relatorios = new javax.swing.JComboBox<>();
+        cb_estoque = new javax.swing.JComboBox<>();
+        listas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,13 +71,10 @@ public class MENU extends javax.swing.JFrame {
         });
         getContentPane().add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 50));
 
-        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
-        cb_estoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_estoqueActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 60));
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 847, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
         cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -94,7 +91,15 @@ public class MENU extends javax.swing.JFrame {
                 cb_relatoriosActionPerformed(evt);
             }
         });
-        getContentPane().add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 70));
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 270, -1, 70));
+
+        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
+        cb_estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_estoqueActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 160, -1, 80));
 
         listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
         listas.addActionListener(new java.awt.event.ActionListener() {
@@ -102,14 +107,9 @@ public class MENU extends javax.swing.JFrame {
                 listasActionPerformed(evt);
             }
         });
-        getContentPane().add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, 70));
+        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 380, -1, 70));
 
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 847, -1));
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\MENU.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_menu.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 490));
 

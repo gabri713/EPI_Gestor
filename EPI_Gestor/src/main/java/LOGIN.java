@@ -61,14 +61,14 @@ public class LOGIN extends javax.swing.JFrame {
                 jPass_senhaActionPerformed(evt);
             }
         });
-        jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 220, 30));
+        jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 190, 30));
 
         txt_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_EmailActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 220, 30));
+        jPanel1.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 210, 30));
 
         btn_logar.setText("jButton1");
         btn_logar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +86,7 @@ public class LOGIN extends javax.swing.JFrame {
         });
         jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 130, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LOGN.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TELA_login.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, 390));
 

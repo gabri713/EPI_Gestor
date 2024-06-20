@@ -36,7 +36,24 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
      */
     public CADAStro_FUNCIONARIOS() {
         initComponents();
+btn_MN_cadastro_F.setBackground (new java.awt.Color(0,0,0,0)); 
+btn_mostra_lista.setBackground (new java.awt.Color(0,0,0,0)); 
+BTN_SALVAR.setBackground (new java.awt.Color(0,0,0,0)); 
+btn_cancelar.setBackground (new java.awt.Color(0,0,0,0)); 
  VOLTA_INICIO.setBackground (new java.awt.Color(0,0,0,0)); 
+ cb_estoque.setBackground (new java.awt.Color(0,0,0,0));
+cb_relatorios.setBackground (new java.awt.Color(0,0,0,0));
+listas.setBackground (new java.awt.Color(0,0,0,0));
+nome.setBackground (new java.awt.Color(0,0,0,1));
+endereco.setBackground (new java.awt.Color(0,0,0,1));
+carteira_trabalho.setBackground (new java.awt.Color(0,0,0,1));
+sexo.setBackground (new java.awt.Color(0,0,0,1));
+estado_civil.setBackground (new java.awt.Color(0,0,0,1));
+escolaridade.setBackground (new java.awt.Color(0,0,0,1));
+cargo.setBackground (new java.awt.Color(0,0,0,1));
+jTextField10.setBackground (new java.awt.Color(0,0,0,1));
+dt_nascimento.setBackground (new java.awt.Color(0,0,0,1));
+txt_cpf.setBackground (new java.awt.Color(0,0,0,1));
  try {
             // Máscara para CPF
             MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
@@ -87,23 +104,22 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_MN_cadastro_F.setText("jButton2");
         btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_MN_cadastro_FActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 50));
+        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 90));
 
-        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
+        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
         cb_estoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_estoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 100, 60));
+        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 200, -1, 80));
 
-        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
+        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Relatorio do Estoque", "Relatorio de  Entrega" }));
         cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 cb_relatoriosAncestorAdded(evt);
@@ -118,23 +134,24 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
                 cb_relatoriosActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, 70));
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 290, 170, 100));
 
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 60));
+        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 70));
 
-        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
+        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
         listas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listasActionPerformed(evt);
             }
         });
-        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 90, 70));
+        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 400, 150, 90));
 
+        nome.setBorder(null);
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeActionPerformed(evt);
@@ -142,87 +159,99 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         });
         jPanel1.add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 440, -1));
 
+        endereco.setBorder(null);
         endereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enderecoActionPerformed(evt);
             }
         });
-        jPanel1.add(endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 440, -1));
+        jPanel1.add(endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 440, 30));
 
+        carteira_trabalho.setBorder(null);
         carteira_trabalho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carteira_trabalhoActionPerformed(evt);
             }
         });
-        jPanel1.add(carteira_trabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 180, -1));
+        jPanel1.add(carteira_trabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 180, 30));
 
+        sexo.setBorder(null);
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoActionPerformed(evt);
             }
         });
-        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 180, -1));
+        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 282, 180, 30));
 
+        estado_civil.setBorder(null);
         estado_civil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 estado_civilActionPerformed(evt);
             }
         });
-        jPanel1.add(estado_civil, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 170, 30));
-        jPanel1.add(escolaridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, 120, 30));
+        jPanel1.add(estado_civil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 140, 30));
 
+        escolaridade.setBorder(null);
+        escolaridade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escolaridadeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(escolaridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 140, 30));
+
+        cargo.setBorder(null);
         cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargoActionPerformed(evt);
             }
         });
-        jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 120, 20));
+        jPanel1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, 180, 30));
 
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField10.setActionCommand(null);
+        jTextField10.setActionCommand("null");
         jTextField10.setBorder(null);
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 120, 20));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 180, 30));
 
-        btn_mostra_lista.setText("jButton1");
         btn_mostra_lista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_mostra_listaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 170, 30));
+        jPanel1.add(btn_mostra_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 170, 30));
 
-        BTN_SALVAR.setText("jButton2");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_SALVARActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 150, 30));
+        jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 150, 30));
 
-        btn_cancelar.setText("jButton2");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 140, 30));
+        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, 140, 30));
 
+        dt_nascimento.setBorder(null);
         dt_nascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dt_nascimentoActionPerformed(evt);
             }
         });
         jPanel1.add(dt_nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 450, -1));
-        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 120, -1));
 
-        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\CADASTRO DE FUNCIONARIOS.png")); // NOI18N
+        txt_cpf.setBorder(null);
+        jPanel1.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 422, 180, 30));
+
+        BTN_MOTRA_LISTA.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_CADASTRO DE FUNCIONARIOS.png")); // NOI18N
         BTN_MOTRA_LISTA.setText("jLabel1");
-        jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 6, 804, 528));
+        jPanel1.add(BTN_MOTRA_LISTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 804, 528));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,7 +318,6 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
         CADAStro_FUNCIONARIOS.this.dispose();
         MENU  VOLTA_INICIO = new MENU();
          VOLTA_INICIO.setVisible(true);
-         
     }//GEN-LAST:event_VOLTA_INICIOActionPerformed
 
     private void listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listasActionPerformed
@@ -425,6 +453,10 @@ public class CADAStro_FUNCIONARIOS extends javax.swing.JFrame {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void escolaridadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolaridadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escolaridadeActionPerformed
 
    
     /**

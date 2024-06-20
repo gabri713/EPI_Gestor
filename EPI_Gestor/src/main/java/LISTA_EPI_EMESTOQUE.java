@@ -240,7 +240,7 @@ public void carregarDadosEPIEstoque() {
                 txt_pesquisaActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 510, 30));
+        jPanel1.add(txt_pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 490, 30));
 
         gerar_relatorio2.setText("jButton1");
         gerar_relatorio2.addActionListener(new java.awt.event.ActionListener() {
@@ -248,11 +248,11 @@ public void carregarDadosEPIEstoque() {
                 gerar_relatorio2ActionPerformed(evt);
             }
         });
-        jPanel1.add(gerar_relatorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 140, 30));
+        jPanel1.add(gerar_relatorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 140, 30));
 
-        lista_pesquisa.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA_EPIS.png")); // NOI18N
+        lista_pesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA EPI EM ESCTOQUE.png"))); // NOI18N
         lista_pesquisa.setText("jLabel1");
-        jPanel1.add(lista_pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 760, 509));
+        jPanel1.add(lista_pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 760, 509));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 503));
 

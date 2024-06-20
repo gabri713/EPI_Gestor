@@ -234,7 +234,7 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_epiENtregue);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 720, 270));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 720, 270));
 
         txt_pesquisa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,9 +249,9 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 190, 40));
 
-        gerar_relatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\epi_ENTRGUE FUNCIONARIO.png")); // NOI18N
+        gerar_relatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA EPI ENTREGUE AOS FUNCIONARIOS.png"))); // NOI18N
         gerar_relatorio.setText("jLabel1");
         jPanel2.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 802, 480));
 
