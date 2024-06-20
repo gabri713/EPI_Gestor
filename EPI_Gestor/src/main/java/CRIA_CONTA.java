@@ -87,6 +87,11 @@ jButton1.setBackground (new java.awt.Color(0,0,0,0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_nome.setBorder(null);
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nomeActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 132, 190, 30));
 
         TXT_email.setBorder(null);
@@ -105,7 +110,7 @@ jButton1.setBackground (new java.awt.Color(0,0,0,0));
                 btn_criarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 100, 20));
+        jPanel1.add(btn_criar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 120, 30));
 
         jFormattedTextField1.setBorder(null);
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,10 +120,14 @@ jButton1.setBackground (new java.awt.Color(0,0,0,0));
         });
         jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 190, 20));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 100, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 120, 20));
 
-        txt_data.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_cria conta.png")); // NOI18N
+        txt_data.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\telacriaconta.png")); // NOI18N
         txt_data.setText("jLabel1");
         jPanel1.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 820, 430));
 
@@ -135,7 +144,7 @@ jButton1.setBackground (new java.awt.Color(0,0,0,0));
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +221,16 @@ jButton1.setBackground (new java.awt.Color(0,0,0,0));
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ CRIA_CONTA.this.dispose();
+        LOGIN login = new LOGIN();
+        login.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nomeActionPerformed
 
     /**
      * @param args the command line arguments

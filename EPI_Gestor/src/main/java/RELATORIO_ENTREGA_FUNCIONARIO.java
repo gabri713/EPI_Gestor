@@ -6,12 +6,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import static java.sql.DriverManager.getConnection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -39,6 +33,7 @@ public class RELATORIO_ENTREGA_FUNCIONARIO extends javax.swing.JFrame {
       preencherTabelaComDadosDoRelatorio();
         configurarEventoAbrirArquivo();
         configurarEventoAbrirArquivoDoubleClick();
+        jButton1 .setBackground (new java.awt.Color(0,0,0,0));
     }
  private void preencherTabelaComDadosDoRelatorio() {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
@@ -164,19 +159,19 @@ public class RELATORIO_ENTREGA_FUNCIONARIO extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTablerelatorioF);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 710, 320));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 670, 320));
 
-        jButton1.setText("jButton1");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 60));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 90, 80));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\RELATORIO EPIS ENTREGUES OS FUNCIONARIOS.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\RELATORIO EPIS ENTREGUES OS FUNCIONARIOS.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 810, 506));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 800, 506));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,7 +203,8 @@ public class RELATORIO_ENTREGA_FUNCIONARIO extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+MENU  VOLTA_INICIO = new MENU();
+         VOLTA_INICIO.setVisible(true);               // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

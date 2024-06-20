@@ -33,6 +33,11 @@ public class LOGIN extends javax.swing.JFrame {
      */
     public LOGIN() {
         initComponents();
+        txt_Email.setBackground (new java.awt.Color(0,0,0,1)); 
+        btn_logar .setBackground (new java.awt.Color(0,0,0,0)); 
+        btn_esqueci_senha.setBackground (new java.awt.Color(0,0,0,0)); 
+        jPass_senha.setBackground (new java.awt.Color(0,0,0,0)); 
+        jButton1.setBackground (new java.awt.Color(0,0,0,0));
     }
      
 
@@ -45,17 +50,25 @@ public class LOGIN extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPass_senha = new javax.swing.JPasswordField();
         txt_Email = new javax.swing.JTextField();
         btn_logar = new javax.swing.JButton();
         btn_esqueci_senha = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPass_senha.setBorder(null);
         jPass_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPass_senhaActionPerformed(evt);
@@ -63,6 +76,7 @@ public class LOGIN extends javax.swing.JFrame {
         });
         jPanel1.add(jPass_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 190, 30));
 
+        txt_Email.setBorder(null);
         txt_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_EmailActionPerformed(evt);
@@ -70,23 +84,30 @@ public class LOGIN extends javax.swing.JFrame {
         });
         jPanel1.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 210, 30));
 
-        btn_logar.setText("jButton1");
+        btn_logar.setBorder(null);
         btn_logar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_logarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 130, 30));
+        jPanel1.add(btn_logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 130, 30));
 
-        btn_esqueci_senha.setText("jButton2");
         btn_esqueci_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_esqueci_senhaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 130, 30));
+        jPanel1.add(btn_esqueci_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 130, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TELA_login.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 120, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_login.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 806, 390));
 
@@ -97,14 +118,14 @@ public class LOGIN extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,6 +189,12 @@ public class LOGIN extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPass_senhaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+  LOGIN.this.dispose();
+        CRIA_CONTA cria = new CRIA_CONTA();
+        cria.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,9 +233,12 @@ public class LOGIN extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_esqueci_senha;
     private javax.swing.JButton btn_logar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPass_senha;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txt_Email;
     // End of variables declaration//GEN-END:variables
 }

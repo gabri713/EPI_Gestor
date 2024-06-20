@@ -43,8 +43,10 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
     public EPI_ENTREGUE() {
          initComponents();
           adicionarPesquisaListener();
+          txt_pesquisa3.setBackground (new java.awt.Color(0,0,0,1));
+           VOLTA_INICIO.setBackground (new java.awt.Color(0,0,0,0));
+           jButton1.setBackground (new java.awt.Color(0,0,0,0));
     }
-
      public void preencherTabela3() {
        
         try {
@@ -213,13 +215,12 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        VOLTA_INICIO.setText("jButton1");
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel2.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 70));
+        jPanel2.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 80, 80));
 
         tb_epiENtregue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -234,26 +235,26 @@ public class EPI_ENTREGUE extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_epiENtregue);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 720, 270));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 720, 270));
 
+        txt_pesquisa3.setBorder(null);
         txt_pesquisa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_pesquisa3ActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_pesquisa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 122, 510, 30));
+        jPanel2.add(txt_pesquisa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 122, 510, 30));
 
-        jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 190, 40));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 190, 40));
 
-        gerar_relatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA EPI ENTREGUE AOS FUNCIONARIOS.png"))); // NOI18N
+        gerar_relatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\LISTA EPI ENTREGUE AOS FUNCIONARIOS.png")); // NOI18N
         gerar_relatorio.setText("jLabel1");
-        jPanel2.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 802, 480));
+        jPanel2.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 802, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

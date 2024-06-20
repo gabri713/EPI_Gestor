@@ -39,6 +39,24 @@ public class ENTRADA_pei_estoque extends javax.swing.JFrame {
 public ENTRADA_pei_estoque() {
         initComponents();
          
+TXT_tipoEPI.setBackground (new java.awt.Color(0,0,0,1));
+txt_quantidade.setBackground (new java.awt.Color(0,0,0,1)); 
+txt_ID_EPI .setBackground (new java.awt.Color(0,0,0,1));
+txt_Fonercedor .setBackground (new java.awt.Color(0,0,0,1));
+nome_epi .setBackground (new java.awt.Color(0,0,0,1));
+
+VOLTA_INICIO .setBackground (new java.awt.Color(0,0,0,0)); 
+btn_MN_cadastro_F .setBackground (new java.awt.Color(0,0,0,0)); 
+btn_mostalistaestoq .setBackground (new java.awt.Color(0,0,0,0)); 
+salva2 .setBackground (new java.awt.Color(0,0,0,0)); 
+jButton1  .setBackground (new java.awt.Color(0,0,0,0));
+
+cb_estoque.setBackground (new java.awt.Color(0,0,0,0)); 
+cb_relatorios .setBackground (new java.awt.Color(0,0,0,0));  
+listas .setBackground (new java.awt.Color(0,0,0,0)); 
+
+jFormatted_data_entrada .setBackground (new java.awt.Color(0,0,0,1));
+jFormatted_validade .setBackground (new java.awt.Color(0,0,0,1));
         
     try {
             // Máscara para a data de entrada e validade
@@ -168,7 +186,6 @@ public static void gerarRelatorio2() {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_mostalistaestoq.setActionCommand("");
         btn_mostalistaestoq.setBorder(null);
         btn_mostalistaestoq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +308,7 @@ public static void gerarRelatorio2() {
         jButton1.setBorder(null);
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 180, 30));
 
-        salvar.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\ENTRADA DE EPIS NO ESTOQUE.png")); // NOI18N
+        salvar.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\ENTRADA DE EPIS NO ESTOQUE.png")); // NOI18N
         salvar.setText("jLabel1");
         jPanel1.add(salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 510));
 
@@ -336,12 +353,15 @@ public static void gerarRelatorio2() {
     private void cb_estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_estoqueActionPerformed
         String selectedOption = (String) cb_estoque.getSelectedItem();
 
-        if ("Visão Geral".equals(selectedOption)) {
+       if ("Visão Geral".equals(selectedOption)) {
             ENTRADA_pei_estoque.this.dispose();
             VISAO_GERAL_ESTOQUE VisaoGeralEstoque = new VISAO_GERAL_ESTOQUE();
             VisaoGeralEstoque.setVisible(true);
-        
-        }
+        } else if ("Epi para funcionarios".equals(selectedOption)) {
+            ENTRADA_pei_estoque.this.dispose();
+            ENTRADA_epi_funcionarios SaidaParaFuncionarios = new ENTRADA_epi_funcionarios();
+            SaidaParaFuncionarios.setVisible(true); 
+                }                                     
     }//GEN-LAST:event_cb_estoqueActionPerformed
 
     private void cb_relatoriosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cb_relatoriosAncestorAdded

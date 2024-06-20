@@ -33,6 +33,7 @@ public class RELATORIO_ESTOQUE extends javax.swing.JFrame {
     public RELATORIO_ESTOQUE() {
         initComponents();
         carregarDadosDoArquivo();
+        TXT_volta.setBackground (new java.awt.Color(0,0,0,0));
     }
    private void carregarDadosDoArquivo() {
         // Caminho da pasta da área de trabalho do usuário
@@ -169,13 +170,14 @@ public class RELATORIO_ESTOQUE extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TXT_volta.setText("jButton1");
+        TXT_volta.setToolTipText("");
+        TXT_volta.setBorder(null);
         TXT_volta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_voltaActionPerformed(evt);
             }
         });
-        jPanel2.add(TXT_volta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 50));
+        jPanel2.add(TXT_volta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 80));
 
         tabelaE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,9 +196,9 @@ public class RELATORIO_ESTOQUE extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelaE);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 720, 360));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 720, 340));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\RELATORIO EPI EM ESTOQUE.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\RELATORIO EPI EM ESTOQUE.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 810, 560));
 

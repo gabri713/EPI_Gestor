@@ -15,7 +15,13 @@ public class MENU extends javax.swing.JFrame {
     public MENU() {
         initComponents();
                                                  
-
+  // Variables declaration - do not modify                     
+    VOLTA_INICIO.setBackground (new java.awt.Color(0,0,0,0));
+     btn_MN_cadastro_F.setBackground (new java.awt.Color(0,0,0,0));
+    cb_estoque.setBackground (new java.awt.Color(0,0,0,0));
+    cb_relatorios.setBackground (new java.awt.Color(0,0,0,0));
+    listas.setBackground (new java.awt.Color(0,0,0,0));
+    // End of variables declaration               
     }
 
     /**
@@ -29,12 +35,12 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         VOLTA_INICIO = new javax.swing.JButton();
-        btn_MN_cadastro_F = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         cb_relatorios = new javax.swing.JComboBox<>();
         cb_estoque = new javax.swing.JComboBox<>();
         listas = new javax.swing.JComboBox<>();
+        btn_MN_cadastro_F = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,22 +67,14 @@ public class MENU extends javax.swing.JFrame {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        getContentPane().add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 60));
-
-        btn_MN_cadastro_F.setText("jButton2");
-        btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MN_cadastro_FActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 50));
+        getContentPane().add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 70));
 
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 847, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
+        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Relatorio do Estoque", "Relatorio de  Entrega" }));
         cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 cb_relatoriosAncestorAdded(evt);
@@ -91,7 +89,7 @@ public class MENU extends javax.swing.JFrame {
                 cb_relatoriosActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 270, -1, 70));
+        jPanel1.add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 260, -1, 100));
 
         cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
         cb_estoque.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +97,7 @@ public class MENU extends javax.swing.JFrame {
                 cb_estoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 160, -1, 80));
+        jPanel1.add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 160, -1, 90));
 
         listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
         listas.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +105,16 @@ public class MENU extends javax.swing.JFrame {
                 listasActionPerformed(evt);
             }
         });
-        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 380, -1, 70));
+        jPanel1.add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 370, -1, 100));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Users\\vcasotti\\Desktop\\Nova pasta\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_menu.png")); // NOI18N
+        btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MN_cadastro_FActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 80, 160, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_menu.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 490));
 

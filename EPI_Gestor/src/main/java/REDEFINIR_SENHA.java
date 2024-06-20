@@ -1,11 +1,10 @@
 
-import com.sun.jdi.connect.Transport;
-import java.net.PasswordAuthentication;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import javax.swing.JOptionPane;
+
 
 
 
@@ -37,6 +36,8 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
      */
     public REDEFINIR_SENHA() {
         initComponents();
+        EMAIL.setBackground (new java.awt.Color(0,0,0,1));
+        ENVIAR.setBackground (new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -72,6 +73,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1143, 25, -1, -1));
 
+        EMAIL.setBorder(null);
         EMAIL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EMAILActionPerformed(evt);
@@ -79,7 +81,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
         });
         getContentPane().add(EMAIL, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 200, -1));
 
-        ENVIAR.setText("jButton1");
+        ENVIAR.setBorder(null);
         ENVIAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ENVIARActionPerformed(evt);
@@ -87,7 +89,7 @@ public class REDEFINIR_SENHA extends javax.swing.JFrame {
         });
         getContentPane().add(ENVIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 120, 30));
 
-        enviar_email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TELA_redefinir senha.png"))); // NOI18N
+        enviar_email.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\TELA_redefinir senha.png")); // NOI18N
         enviar_email.setText("jLabel1");
         getContentPane().add(enviar_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 524));
 

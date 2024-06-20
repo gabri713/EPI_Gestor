@@ -40,6 +40,11 @@ public class LISTA_FUNCIONARIOS extends javax.swing.JFrame {
         initComponents();
         adicionarPesquisaListener();
         preencherTabela();
+        TXT_pesquisa2.setBackground (new java.awt.Color(0,0,0,1)); 
+        VOLTA_INICIO.setBackground (new java.awt.Color(0,0,0,0)); 
+BTN_SALVAR .setBackground (new java.awt.Color(0,0,0,0)); 
+ 
+jButton1.setBackground (new java.awt.Color(0,0,0,0)); 
     }
 
     public void preencherTabela() {
@@ -148,7 +153,6 @@ public void carregarDadosFuncionarios() {
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_listaF = new javax.swing.JTable();
         BTN_SALVAR = new javax.swing.JButton();
-        gerar_relatorio = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         TXT_pesquisa2 = new javax.swing.JTextField();
         BTN_CANCELAR = new javax.swing.JLabel();
@@ -157,13 +161,12 @@ public void carregarDadosFuncionarios() {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        VOLTA_INICIO.setText("jButton1");
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
             }
         });
-        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 40));
+        jPanel1.add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 70));
 
         tb_listaF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -186,7 +189,6 @@ public void carregarDadosFuncionarios() {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 760, 270));
 
-        BTN_SALVAR.setText("jButton1");
         BTN_SALVAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_SALVARActionPerformed(evt);
@@ -194,24 +196,22 @@ public void carregarDadosFuncionarios() {
         });
         jPanel1.add(BTN_SALVAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 160, 30));
 
-        gerar_relatorio.setText("jButton2");
-        gerar_relatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gerar_relatorioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(gerar_relatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 150, 30));
-
-        jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 150, 40));
-        jPanel1.add(TXT_pesquisa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 510, 30));
 
-        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/LISTA FUNCIONARIOS CADASTRADOS.png"))); // NOI18N
+        TXT_pesquisa2.setBorder(null);
+        TXT_pesquisa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXT_pesquisa2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TXT_pesquisa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 500, 40));
+
+        BTN_CANCELAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/TTela funcionarios cadastrados.png"))); // NOI18N
         BTN_CANCELAR.setText("jLabel1");
         BTN_CANCELAR.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -244,16 +244,6 @@ public void carregarDadosFuncionarios() {
          VOLTA_INICIO.setVisible(true);
 
     }//GEN-LAST:event_VOLTA_INICIOActionPerformed
-
-    private void gerar_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerar_relatorioActionPerformed
-        // TODO add your handling code here:
-        // Tornar a tabela editável
-    for (int i = 0; i < tb_listaF.getColumnCount(); i++) {
-        Class<?> columnClass = tb_listaF.getColumnClass(i);
-        tb_listaF.setDefaultEditor(columnClass, new DefaultCellEditor(new JTextField()));
-    }
-   
-    }//GEN-LAST:event_gerar_relatorioActionPerformed
 
     private void BTN_SALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SALVARActionPerformed
        
@@ -297,6 +287,10 @@ public void carregarDadosFuncionarios() {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_CANCELARAncestorAdded
 
+    private void TXT_pesquisa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_pesquisa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXT_pesquisa2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,7 +331,6 @@ public void carregarDadosFuncionarios() {
     private javax.swing.JButton BTN_SALVAR;
     private javax.swing.JTextField TXT_pesquisa2;
     private javax.swing.JButton VOLTA_INICIO;
-    private javax.swing.JButton gerar_relatorio;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

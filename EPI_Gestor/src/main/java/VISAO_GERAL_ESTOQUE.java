@@ -35,6 +35,14 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         initComponents();
         carregarTotalEPIs();
         carregarEPIsVencendoEsteMes();
+txt_total_estoque .setBackground (new java.awt.Color(0,0,0,1));
+txt__vence_esse_mes .setBackground (new java.awt.Color(0,0,0,1)); 
+txt_vencendo .setBackground (new java.awt.Color(0,0,0,1));
+VOLTA_INICIO  .setBackground (new java.awt.Color(0,0,0,0));
+btn_MN_cadastro_F.setBackground (new java.awt.Color(0,0,0,0));
+cb_estoque .setBackground (new java.awt.Color(0,0,0,0));
+cb_relatorios .setBackground (new java.awt.Color(0,0,0,0));
+listas .setBackground (new java.awt.Color(0,0,0,0));
     }
     
    private void carregarTotalEPIs() {
@@ -150,7 +158,7 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        VOLTA_INICIO.setText("jButton1");
+        VOLTA_INICIO.setBorder(null);
         VOLTA_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VOLTA_INICIOActionPerformed(evt);
@@ -158,7 +166,7 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(VOLTA_INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 70));
 
-        btn_MN_cadastro_F.setText("jButton2");
+        btn_MN_cadastro_F.setBorder(null);
         btn_MN_cadastro_F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_MN_cadastro_FActionPerformed(evt);
@@ -166,7 +174,8 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(btn_MN_cadastro_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 70, 70));
 
-        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
+        cb_estoque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Visão Geral", "Entrada de epis", "Epi para funcionarios", " " }));
+        cb_estoque.setBorder(null);
         cb_estoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_estoqueActionPerformed(evt);
@@ -174,7 +183,8 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(cb_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 170, 150, 100));
 
-        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Relatorio do Estoque", "Relatorio de  Entrega" }));
+        cb_relatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "Relatorio do Estoque", "Relatorio de  Entrega" }));
+        cb_relatorios.setBorder(null);
         cb_relatorios.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 cb_relatoriosAncestorAdded(evt);
@@ -191,7 +201,7 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(cb_relatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 280, -1, 100));
 
-        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
+        listas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".", "EPI em Estoque", "Funcionarios  Cadastrados", "EPI Entregue", " " }));
         listas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listasActionPerformed(evt);
@@ -199,22 +209,26 @@ public class VISAO_GERAL_ESTOQUE extends javax.swing.JFrame {
         });
         getContentPane().add(listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 390, -1, 100));
 
+        txt_total_estoque.setBorder(null);
         txt_total_estoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_total_estoqueActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_total_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 210, 30));
+        getContentPane().add(txt_total_estoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 210, 30));
+
+        txt__vence_esse_mes.setBorder(null);
         getContentPane().add(txt__vence_esse_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 210, 30));
 
+        txt_vencendo.setBorder(null);
         txt_vencendo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vencendoActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_vencendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 230, 30));
+        getContentPane().add(txt_vencendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 210, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/telas/epi_gestor/telas/VISAO_GERAL_DO ESTOQUE.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\vitor\\Desktop\\EPI_gestor\\EPI_Gestor\\EPI_Gestor\\src\\main\\java\\com\\telas\\epi_gestor\\telas\\VISAO_GERAL_DO ESTOQUE.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 502));
 
